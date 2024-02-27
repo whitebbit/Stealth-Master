@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1957698324500714
+GameObject:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Component:
+  - component: {fileID: 4195246253002115}
+  - component: {fileID: 114807955796118695}
+  m_Layer: 0
+  m_Name: Lee_VampirismPerk
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4195246253002115
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1957698324500714}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 116.53751, y: 327.88776, z: -406.74866}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: -0, z: -0}
+--- !u!114 &114807955796118695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1957698324500714}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 551863505, guid: abde99d9266825fc6768502087c5a2cf, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  id: perk_leevampirism
+  rarity: 0
+  _shopCost: 300
+  heroSpecific: {fileID: 11400000, guid: 3f3cc01b7b2c7a34a9f8e834d1de4622, type: 2}
+  locItemName:
+    key: loc_lee_vampirism
+    defaultValue: VAMPIRISM
+  locItemSubtitle:
+    key:
+    defaultValue:
+  locItemDesc:
+    key: loc_lee_vampirism_desc
+    defaultValue: GAIN HEAL PER KILL
+  sprite: {fileID: 21300000, guid: c58ac99a35e53914a8d5f61b41e4657a, type: 2}
+  descriptionSprite: {fileID: 0}
+  _healthRegenPerKill: 0.5
+  _healthRegenChance: 0.33
+  _onHealEffect: {fileID: 198649356460485669, guid: eaf7ecdbca463c240bf257517ed3936e, type: 2}

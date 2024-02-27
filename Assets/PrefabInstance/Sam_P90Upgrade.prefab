@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1502843548983050
+GameObject:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Component:
+  - component: {fileID: 4776874984379280}
+  - component: {fileID: 114725296594630051}
+  m_Layer: 0
+  m_Name: Sam_P90Upgrade
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4776874984379280
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1502843548983050}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 116.53751, y: 327.88776, z: -406.74866}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: -0, z: -0}
+--- !u!114 &114725296594630051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1502843548983050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1162771298, guid: abde99d9266825fc6768502087c5a2cf, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  id: upgrade_samp90
+  rarity: 3
+  _shopCost: 200
+  heroSpecific: {fileID: 0}
+  locItemName:
+    key: loc_card_upgrade
+    defaultValue: UPGRADE
+  locItemSubtitle:
+    key: loc_sam_p90
+    defaultValue: P90
+  locItemDesc:
+    key: loc_p90_upgrade_desc
+    defaultValue: P90 UPGRADE DESC
+  sprite: {fileID: 21300000, guid: ed4ae0f22237ebe4fb8fbf8c37b2f5de, type: 2}
+  descriptionSprite: {fileID: 0}
+  upgrades:
+  - {fileID: 11400000, guid: 53274f0457ee7b54ab5c82fab4fac1e0, type: 2}

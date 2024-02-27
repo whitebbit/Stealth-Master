@@ -1,0 +1,101 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1063260093760059
+GameObject:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Component:
+  - component: {fileID: 4540143862224337}
+  - component: {fileID: 114112748230280697}
+  m_Layer: 0
+  m_Name: Venom_TrapPerk
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4540143862224337
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1063260093760059}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 116.53751, y: 327.88776, z: -406.74866}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: -0, z: -0}
+--- !u!114 &114112748230280697
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1063260093760059}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 150552446, guid: abde99d9266825fc6768502087c5a2cf, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  id: perk_trapperk
+  rarity: 3
+  _shopCost: 300
+  heroSpecific: {fileID: 11400000, guid: f5d7b9517bbbf734ca1f74d853403619, type: 2}
+  locItemName:
+    key: loc_venom_trap
+    defaultValue: TRAP PERK
+  locItemSubtitle:
+    key:
+    defaultValue:
+  locItemDesc:
+    key: loc_venom_trap_desc
+    defaultValue: VENOM DROP PART OF SELF AS A TRAP
+  sprite: {fileID: 21300000, guid: 2e72f5531cdd1fd4fb4c80b8b738ab0f, type: 2}
+  descriptionSprite: {fileID: 0}
+  _flyDuration: 0.8
+  _timeDelay: 3
+  _distance: {x: 4, y: 6}
+  _circleArea: 2
+  _flyYCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0.5
+      inSlope: 4.227441
+      outSlope: 4.227441
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.08955593
+    - serializedVersion: 3
+      time: 0.5
+      value: 1.5
+      inSlope: 0.0115616545
+      outSlope: 0.0115616545
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.4583333
+      outWeight: 0.5833334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: -6.998028
+      outSlope: -6.998028
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.052188396
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  _flyFX: {fileID: 1799779943450053, guid: 5442cdc0859220843948301b69c64e97, type: 2}
+  _splashFx: {fileID: 198528399025625080, guid: aa99d2cd411f54b49a63922906e96787, type: 2}
+  _trapPrefab: {fileID: 114972824292574234, guid: 0d5d2c525f5288b42ab3901828920e00, type: 2}

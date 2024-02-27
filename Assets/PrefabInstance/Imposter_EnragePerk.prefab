@@ -1,0 +1,96 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1435409017501295
+GameObject:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Component:
+  - component: {fileID: 4820153303028687}
+  - component: {fileID: 114826998851891202}
+  m_Layer: 0
+  m_Name: Imposter_EnragePerk
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4820153303028687
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1435409017501295}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: -0, z: -0}
+--- !u!114 &114826998851891202
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1435409017501295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -2055669531, guid: abde99d9266825fc6768502087c5a2cf, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  id: perk_imposterenrage
+  rarity: 2
+  _shopCost: 300
+  heroSpecific: {fileID: 11400000, guid: 6d740042279ac0742829d88f2c50fa91, type: 2}
+  locItemName:
+    key: loc_imposter_enrage_perk
+    defaultValue: ENRAGE
+  locItemSubtitle:
+    key:
+    defaultValue:
+  locItemDesc:
+    key: loc_imposter_enrage_perk_dec
+    defaultValue: SPEED UP AT LOW HP
+  sprite: {fileID: 21300000, guid: 66c90ec5194411b4c88e2e8c0bd83259, type: 2}
+  descriptionSprite: {fileID: 0}
+  _runSpeedFromHealthCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: -0.0023874822
+      value: 1.2004045
+      inSlope: 0.00046483593
+      outSlope: 0.00046483593
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.74299926
+    - serializedVersion: 3
+      time: 0.632513
+      value: 1.0001737
+      inSlope: -0.3153736
+      outSlope: Infinity
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33185112
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: -0.006346662
+      outSlope: -0.006346662
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.37083256
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  _trailHeight: 2.4
+  _enrageTrail: {fileID: 96223857166501752, guid: eab765b7020d24e448a6c1214d35bc83, type: 2}

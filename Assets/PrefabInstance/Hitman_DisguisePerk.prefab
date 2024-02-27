@@ -1,0 +1,69 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1616010005837568
+GameObject:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Component:
+  - component: {fileID: 4918104543387584}
+  - component: {fileID: 114194784680570766}
+  m_Layer: 0
+  m_Name: Hitman_DisguisePerk
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4918104543387584
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1616010005837568}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 116.53751, y: 327.88776, z: -406.74866}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: -0, z: -0}
+--- !u!114 &114194784680570766
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1616010005837568}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1004166092, guid: abde99d9266825fc6768502087c5a2cf, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  id: perk_hitmandisguise
+  rarity: 2
+  _shopCost: 300
+  heroSpecific: {fileID: 11400000, guid: 2f3fdc30ca5ea40428ee37639fdb8c41, type: 2}
+  locItemName:
+    key: loc_hitman_disguise
+    defaultValue: DISGUISE
+  locItemSubtitle:
+    key:
+    defaultValue:
+  locItemDesc:
+    key: loc_hitman_disguise_desc
+    defaultValue: DRESS UP AFTER KILL
+  sprite: {fileID: 21300000, guid: a5ee8b92a40d78f47885009db0335b64, type: 2}
+  descriptionSprite: {fileID: 0}
+  redressDelay: 0.9
+  disguiseActivationRange: 0.9
+  disguiseLifeTime: 6
+  disguiseStartedEffect: {fileID: 198485925309706935, guid: 5075981e186020d4baedde0f090392d9, type: 2}
+  disguiseEndedEffect: {fileID: 198190237165470794, guid: 0665944f6467d6d438595fdb34045a9f, type: 2}
+  nakedSkin: {fileID: 11400000, guid: dbfaf046910597140b26b54ef6466569, type: 2}
+  timerColor: {r: 1, g: 1, b: 1, a: 1}
+  timerBarColor: {r: 0.1745283, g: 0.64939636, b: 1, a: 1}

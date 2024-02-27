@@ -1,0 +1,62 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1287892859631969
+GameObject:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Component:
+  - component: {fileID: 4472164701602140}
+  - component: {fileID: 114136963073648958}
+  m_Layer: 0
+  m_Name: Hitman_ExtraMoneyPerk
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4472164701602140
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1287892859631969}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 116.53751, y: 327.88776, z: -406.74866}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: -0, z: -0}
+--- !u!114 &114136963073648958
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1287892859631969}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 398820320, guid: abde99d9266825fc6768502087c5a2cf, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  id: perk_hitmanextramoney
+  rarity: 0
+  _shopCost: 300
+  heroSpecific: {fileID: 11400000, guid: 2f3fdc30ca5ea40428ee37639fdb8c41, type: 2}
+  locItemName:
+    key: loc_hitman_extramoney
+    defaultValue: EXTRA MONEY
+  locItemSubtitle:
+    key:
+    defaultValue:
+  locItemDesc:
+    key: loc_hitman_extramoney_desc
+    defaultValue: +10% MONEY
+  sprite: {fileID: 21300000, guid: 66c90ec5194411b4c88e2e8c0bd83259, type: 2}
+  descriptionSprite: {fileID: 0}
+  moneyIncreaseCoefficient: 1.1

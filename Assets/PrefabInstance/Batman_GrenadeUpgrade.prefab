@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1867451889255342
+GameObject:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Component:
+  - component: {fileID: 4985055656629118}
+  - component: {fileID: 114856836305382490}
+  m_Layer: 0
+  m_Name: Batman_GrenadeUpgrade
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4985055656629118
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1867451889255342}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 116.53751, y: 327.88776, z: -406.74866}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: -0, z: -0}
+--- !u!114 &114856836305382490
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1867451889255342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1162771298, guid: abde99d9266825fc6768502087c5a2cf, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  id: upgrade_batmangrenade
+  rarity: 3
+  _shopCost: 200
+  heroSpecific: {fileID: 0}
+  locItemName:
+    key: loc_card_upgrade
+    defaultValue: UPGRADE
+  locItemSubtitle:
+    key: loc_batman_grenade
+    defaultValue: GRENADE
+  locItemDesc:
+    key: loc_grenade_upgrade_desc
+    defaultValue: SCARY & STICKY
+  sprite: {fileID: 21300000, guid: 2add6b5f69a1b5343a8c0fbb73b2c68a, type: 2}
+  descriptionSprite: {fileID: 0}
+  upgrades:
+  - {fileID: 11400000, guid: be4d0401609b22140992d68634ec6656, type: 2}

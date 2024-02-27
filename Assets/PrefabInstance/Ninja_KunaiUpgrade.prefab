@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1050868002346659
+GameObject:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Component:
+  - component: {fileID: 4832800939313911}
+  - component: {fileID: 114534378982215838}
+  m_Layer: 0
+  m_Name: Ninja_KunaiUpgrade
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4832800939313911
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1050868002346659}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 116.53751, y: 327.88776, z: -406.74866}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: -0, z: -0}
+--- !u!114 &114534378982215838
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1050868002346659}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1162771298, guid: abde99d9266825fc6768502087c5a2cf, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  id: upgrade_ninjakunai
+  rarity: 3
+  _shopCost: 200
+  heroSpecific: {fileID: 0}
+  locItemName:
+    key: loc_card_upgrade
+    defaultValue: UPGRADE
+  locItemSubtitle:
+    key: loc_ninja_kunai
+    defaultValue: KUNAI
+  locItemDesc:
+    key: loc_kunai_upgrade_desc
+    defaultValue: KUNAI UPGRADE DESC
+  sprite: {fileID: 21300000, guid: 1e3babdfbae05864395b11347b2f21e0, type: 2}
+  descriptionSprite: {fileID: 0}
+  upgrades:
+  - {fileID: 11400000, guid: 13f20e1d14a7a794f89fe6efddfc1c12, type: 2}

@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1257927902906316
+GameObject:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Component:
+  - component: {fileID: 4673848209145829}
+  - component: {fileID: 114617510889669803}
+  m_Layer: 0
+  m_Name: Hacker_TurretPerk
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4673848209145829
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1257927902906316}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 116.53751, y: 327.88776, z: -406.74866}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: -0, z: -0}
+--- !u!114 &114617510889669803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1257927902906316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -425290549, guid: abde99d9266825fc6768502087c5a2cf, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  id: perk_hackerturret
+  rarity: 0
+  _shopCost: 300
+  heroSpecific: {fileID: 11400000, guid: f02c80e7e1fe8cf43b5c16ec901a5fe6, type: 2}
+  locItemName:
+    key:
+    defaultValue:
+  locItemSubtitle:
+    key:
+    defaultValue:
+  locItemDesc:
+    key:
+    defaultValue:
+  sprite: {fileID: 21300000, guid: dd34ecf4bd97c9a45a62c7a9fe306bfb, type: 2}
+  descriptionSprite: {fileID: 0}
+  _spawnCooldown: 12
+  _initialCooldown: 6
+  _turretPrefab: {fileID: 114648826884026052, guid: 0dfb19fad1d0c2e4b981ce85fdff2668, type: 2}
