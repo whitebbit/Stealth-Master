@@ -12,25 +12,22 @@ namespace _3._Scripts.Gizmos
 
         public DrawGizmosType Type => type;
 
-        public void DrawGizmos(Transform point, Vector3 size, Vector3 offset = default)
+        public void DrawGizmos(Vector3 point, Vector3 size, Transform startPoint)
         {
             if (type == DrawGizmosType.Never) return;
-
-            var position = point.TransformPoint(offset);
+            
             UnityEngine.Gizmos.color = color;
-            UnityEngine.Gizmos.matrix = point.localToWorldMatrix;
-            UnityEngine.Gizmos.DrawCube(position, size);
+            UnityEngine.Gizmos.matrix = startPoint.localToWorldMatrix;
+            UnityEngine.Gizmos.DrawCube(point, size);
         }
         
-        public void DrawGizmos(Transform point, float radius, Vector3 offset = default)
+        public void DrawGizmos(Vector3 point, float radius, Transform startPoint)
         {
             if (type == DrawGizmosType.Never) return;
-            if (point == null) return;
-
-            var position = point.TransformPoint(offset);
+            
             UnityEngine.Gizmos.color = color;
-            UnityEngine.Gizmos.matrix = point.localToWorldMatrix;
-            UnityEngine.Gizmos.DrawSphere(position, radius);
+            UnityEngine.Gizmos.matrix = startPoint.localToWorldMatrix;
+            UnityEngine.Gizmos.DrawSphere(point, radius);
         }
     }
 }

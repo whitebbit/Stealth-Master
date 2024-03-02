@@ -1,13 +1,37 @@
-using _3._Scripts.Controls.Interfaces;
+using System;
 using _3._Scripts.Units.Health;
 using _3._Scripts.Units.Interfaces;
+using _3._Scripts.Units.Player;
 using UnityEngine;
 
 namespace _3._Scripts.Units
 {
-    public abstract class Unit: MonoBehaviour
+    public abstract class Unit : MonoBehaviour, IDamageable, IDying
     {
-        public UnitHealth Health { get; protected set; }
-        public IDamageable Damageable { get; protected set; }
+        [SerializeField] private int maxHealth = 100;
+        protected UnitHealth Health { get; set; }
+
+        private void Awake()
+        {
+            Health = new UnitHealth(maxHealth);
+        }
+
+        private void Start()
+        {
+            Health.OnHealthChanged += (current, _) =>
+            {
+                if (current <= 0) Dead();
+            };
+        }
+
+        public virtual void ApplyDamage(float damage)
+        {
+            Health.Health -= damage;
+        }
+
+        public virtual void Dead()
+        {
+            Destroy(gameObject);
+        }
     }
 }
