@@ -9,19 +9,24 @@ namespace _3._Scripts.Units.Weapons
     {
         [SerializeField] private float attackCooldown;
         [SerializeField] private float damage;
-        private float lastAttackTime;
+        protected float LastAttackTime;
         
-        public void Attack(IWeaponVisitor visitor)
+        public virtual void Attack(IWeaponVisitor visitor)
         {
-            if (!(Time.time - lastAttackTime >= attackCooldown)) return;
+            if (CanAttack()) return;
             
-            lastAttackTime = Time.time;
+            LastAttackTime = Time.time;
             
             PerformAttack();
             DoAnimation();
             PlaySound();
             CreateParticle();
             DoDamage(visitor);
+        }
+
+        protected bool CanAttack()
+        {
+            return Time.time - LastAttackTime < attackCooldown;
         }
 
         protected virtual void PerformAttack()

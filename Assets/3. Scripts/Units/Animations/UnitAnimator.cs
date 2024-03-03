@@ -6,7 +6,7 @@ namespace _3._Scripts.Units.Animations
     public sealed class UnitAnimator : MonoBehaviour
     {
         private Animator animator;
-
+        public event Action<string> AnimationEvent;
         private void Awake()
         {
             animator = GetComponent<Animator>();
@@ -27,7 +27,10 @@ namespace _3._Scripts.Units.Animations
             
             animator.SetFloat(key, value);
         }
-        
-        
+
+        public void OnEventActivate(string key)
+        {
+            AnimationEvent?.Invoke(key);
+        }
     }
 }
