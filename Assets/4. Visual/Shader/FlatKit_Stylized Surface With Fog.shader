@@ -1,4 +1,4 @@
-Shader "FlatKit/Stylized Surface With Fog" {
+Shader "FlatKit_Old/Stylized Surface With Fog" {
 	Properties {
 		_Color ("Color", Vector) = (1,1,1,1)
 		[Space(10)] [KeywordEnum(None, Single, Steps, Curve)] _CelPrimaryMode ("Cel Shading Mode", Float) = 1

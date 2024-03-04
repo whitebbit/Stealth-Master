@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace _3._Scripts.Detectors.OverlapSystem.Base
 {
-    public abstract class SphereOverlapDetector: OverlapDetector<IWeaponVisitor>
+    public abstract class SphereOverlapDetector<T>: OverlapDetector<T>
     {
         [Header("Sphere settings")] 
         [SerializeField] private float radius;

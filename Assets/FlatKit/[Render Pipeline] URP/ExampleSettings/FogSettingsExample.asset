@@ -40,6 +40,7 @@ MonoBehaviour:
     atime6: 0
     atime7: 0
     m_Mode: 0
+    m_ColorSpace: -1
     m_NumColorKeys: 2
     m_NumAlphaKeys: 3
   near: 30
@@ -74,6 +75,7 @@ MonoBehaviour:
     atime6: 0
     atime7: 0
     m_Mode: 0
+    m_ColorSpace: -1
     m_NumColorKeys: 3
     m_NumAlphaKeys: 3
   low: 5
@@ -81,3 +83,4 @@ MonoBehaviour:
   heightFogIntensity: 0.5
   useHeightFogOnSky: 1
   distanceHeightBlend: 0.5
+  renderEvent: 500

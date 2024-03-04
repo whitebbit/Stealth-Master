@@ -1,4 +1,4 @@
-Shader "FlatKit/Stylized Surface Silhouette Emission" {
+Shader "FlatKit_Old/Stylized Surface Silhouette Emission" {
 	Properties {
 		_Color ("Color", Vector) = (1,1,1,1)
 		[Space(10)] [KeywordEnum(None, Single, Steps)] _CelPrimaryMode ("Cel Shading Mode", Float) = 1
