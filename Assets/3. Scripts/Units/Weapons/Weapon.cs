@@ -1,3 +1,6 @@
+using System;
+using _3._Scripts.Detectors;
+using _3._Scripts.Detectors.Interfaces;
 using _3._Scripts.Units.Interfaces;
 using _3._Scripts.Units.Weapons.Interfaces;
 using UnityEngine;
@@ -9,8 +12,12 @@ namespace _3._Scripts.Units.Weapons
     {
         [SerializeField] private float attackCooldown;
         [SerializeField] private float damage;
-        protected float LastAttackTime;
         
+        [SerializeField] protected BaseDetector<IWeaponVisitor> detector;
+        protected float LastAttackTime;
+
+       
+
         public virtual void Attack(IWeaponVisitor visitor)
         {
             if (CanAttack()) return;
