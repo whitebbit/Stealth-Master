@@ -1,18 +1,24 @@
 using _3._Scripts.Units.Animations;
+using _3._Scripts.Units.Animations.IK;
 using _3._Scripts.Units.Interfaces;
+using RootMotion.FinalIK;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace _3._Scripts.Units.Weapons
 {
     public class RangeWeapon: Weapon
     {
-        public UnitAnimator unitAnimator;
-
+        [SerializeField] private UnitAnimator unitAnimator;
+        [SerializeField] private AimIK aimIK;
         private IWeaponVisitor lastVisitor;
         private void Start()
         {
-            detector.OnFound += Attack;
+            Detector.OnFound += Attack;
             unitAnimator.AnimationEvent += OnAnimationEvent;
+
+            aimIK.solver.transform = transform;
+            aimIK.solver.IKPositionWeight = 0;
         }
 
         public override void Attack(IWeaponVisitor visitor)
@@ -21,6 +27,10 @@ namespace _3._Scripts.Units.Weapons
             
             LastAttackTime = Time.time;
             lastVisitor = visitor;
+            
+            aimIK.solver.target = lastVisitor.Transform();
+            aimIK.solver.IKPositionWeight = 1;
+            
             DoAnimation();
         }
 
@@ -36,7 +46,7 @@ namespace _3._Scripts.Units.Weapons
             PlaySound();
             PerformAttack();
             CreateParticle();
-            DoDamage(lastVisitor);
+            //DoDamage(lastVisitor);
         }
     }
 }

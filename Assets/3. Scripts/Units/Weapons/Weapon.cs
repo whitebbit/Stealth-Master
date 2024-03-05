@@ -13,10 +13,13 @@ namespace _3._Scripts.Units.Weapons
         [SerializeField] private float attackCooldown;
         [SerializeField] private float damage;
         
-        [SerializeField] protected BaseDetector<IWeaponVisitor> detector;
+        protected BaseDetector<IWeaponVisitor> Detector;
         protected float LastAttackTime;
 
-       
+        private void Awake()
+        {
+            Detector = GetComponent<BaseDetector<IWeaponVisitor>>();
+        }
 
         public virtual void Attack(IWeaponVisitor visitor)
         {

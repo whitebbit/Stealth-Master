@@ -12,7 +12,7 @@ namespace _3._Scripts.Units.Weapons
         private IWeaponVisitor lastVisitor;
         private void Start()
         {
-            detector.OnFound += Attack;
+            Detector.OnFound += Attack;
             unitAnimator.AnimationEvent += OnAnimationEvent;
         }
 
