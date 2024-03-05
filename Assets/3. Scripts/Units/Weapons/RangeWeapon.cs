@@ -9,9 +9,12 @@ namespace _3._Scripts.Units.Weapons
 {
     public class RangeWeapon: Weapon
     {
+        [Space]
         [SerializeField] private UnitAnimator unitAnimator;
         [SerializeField] private AimIK aimIK;
+        
         private IWeaponVisitor lastVisitor;
+        
         private void Start()
         {
             Detector.OnFound += Attack;

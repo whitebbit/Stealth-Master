@@ -6,8 +6,9 @@ using UnityEngine;
 namespace _3._Scripts.Units.Weapons
 {
     public class MeleeWeapon : Weapon
-    {
-        public UnitAnimator unitAnimator;
+    {      
+        [Space]
+        [SerializeField]private  UnitAnimator unitAnimator;
 
         private IWeaponVisitor lastVisitor;
         private void Start()

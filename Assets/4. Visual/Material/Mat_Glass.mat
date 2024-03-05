@@ -23,8 +23,8 @@ Material:
   stringTagMap:
     RenderType: Transparent
   disabledShaderPasses:
-  - SRPDEFAULTUNLIT
   - SHADOWCASTER
+  - SRPDEFAULTUNLIT
   m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
@@ -60,7 +60,7 @@ Material:
     - _BumpScale: 1
     - _CameraDistanceImpact: 0
     - _CelExtraEnabled: 0
-    - _CelNumSteps: 4
+    - _CelNumSteps: 5
     - _CelPrimaryMode: 2
     - _Cull: 2
     - _Cutoff: 0.5
@@ -118,17 +118,17 @@ Material:
     - _VertexColorsEnabled: 0
     - _ZWrite: 0
     m_Colors:
-    - _BaseColor: {r: 0.01842292, g: 0.347192, b: 0.709, a: 1}
+    - _BaseColor: {r: 0.01842292, g: 0.347192, b: 0.709, a: 0.3254902}
     - _Color: {r: 0.23921567, g: 0.875217, b: 1, a: 0.09803922}
     - _ColorDim: {r: 0, g: 0, b: 0, a: 1}
     - _ColorDimCurve: {r: 0.01842292, g: 0.347192, b: 0.4339623, a: 0.59607846}
     - _ColorDimExtra: {r: 0.01842292, g: 0.347192, b: 0.4339623, a: 0.59607846}
-    - _ColorDimSteps: {r: 0.01842292, g: 0.347192, b: 0.4339623, a: 0.59607846}
-    - _ColorGradient: {r: 0.85023, g: 0.85034, b: 0.85045, a: 0.85056}
+    - _ColorDimSteps: {r: 0.01842292, g: 0.347192, b: 0.4339623, a: 1}
+    - _ColorGradient: {r: 0.01842292, g: 0.347192, b: 0.709, a: 0.3254902}
     - _EdgeColor: {r: 0.8018868, g: 0.9902567, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _FlatRimColor: {r: 0.85023, g: 0.85034, b: 0.85045, a: 0.85056}
-    - _FlatSpecularColor: {r: 0.85023, g: 0.85034, b: 0.85045, a: 0.85056}
+    - _FlatRimColor: {r: 0.01842292, g: 0.347192, b: 0.709, a: 0.3254902}
+    - _FlatSpecularColor: {r: 0.01842292, g: 0.347192, b: 0.709, a: 0.3254902}
     - _HColor: {r: 1, g: 1, b: 1, a: 1}
     - _LightmapDirection: {r: 0, g: 1, b: 0, a: 0}
     - _OutlineColor: {r: 1, g: 1, b: 1, a: 1}
