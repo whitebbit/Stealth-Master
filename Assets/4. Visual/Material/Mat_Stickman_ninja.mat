@@ -12,7 +12,8 @@ Material:
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
-  - DR_CEL_EXTRA_ON
+  - DR_GRADIENT_ON
+  - DR_RIM_ON
   - _CELPRIMARYMODE_SINGLE
   - _TEXTUREBLENDINGMODE_MULTIPLY
   m_InvalidKeywords:
@@ -63,7 +64,7 @@ Material:
     - _CameraDistanceFadeClose: 0
     - _CameraDistanceFadeFar: 10
     - _CameraDistanceImpact: 1
-    - _CelExtraEnabled: 1
+    - _CelExtraEnabled: 0
     - _CelNumSteps: 5
     - _CelPrimaryMode: 1
     - _Cull: 2
@@ -74,12 +75,12 @@ Material:
     - _DirectionYaw: 0
     - _DstBlend: 0
     - _Exponent: 1
-    - _FlatRimEdgeSmoothness: 0.199
-    - _FlatRimLightAlign: 0.466
-    - _FlatRimSize: 0.284
+    - _FlatRimEdgeSmoothness: 0.396
+    - _FlatRimLightAlign: 0
+    - _FlatRimSize: 0.536
     - _FlatSpecularEdgeSmoothness: 1
-    - _FlatSpecularSize: 0.723
-    - _Flatness: 0.896
+    - _FlatSpecularSize: 0.752
+    - _Flatness: 0.764
     - _FlatnessExtra: 0.359
     - _GlossMapScale: 1
     - _Glossiness: 0.5
@@ -87,7 +88,7 @@ Material:
     - _GradientAngle: 0
     - _GradientCenterX: 0
     - _GradientCenterY: 0
-    - _GradientEnabled: 0
+    - _GradientEnabled: 1
     - _GradientSize: 10
     - _Intensity: 1
     - _LightContribution: 0
@@ -113,13 +114,13 @@ Material:
     - _QueueOffset: 0
     - _RampSmooth: 0.656
     - _RampThreshold: 0.295
-    - _RimEnabled: 0
+    - _RimEnabled: 1
     - _RimMax: 0.863
     - _RimMin: 0.73
     - _Saturation: 1
-    - _SelfShadingSize: 0.498
+    - _SelfShadingSize: 0.676
     - _SelfShadingSizeExtra: 0
-    - _ShadowEdgeSize: 0.415
+    - _ShadowEdgeSize: 0.131
     - _ShadowEdgeSizeExtra: 0.131
     - _Shininess: 0.1
     - _SmoothnessTextureChannel: 0
@@ -143,7 +144,7 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - _AddColor: {r: 1, g: 1, b: 1, a: 0}
-    - _BaseColor: {r: 0.8962264, g: 0.8962264, b: 0.8962264, a: 1}
+    - _BaseColor: {r: 1, g: 0.8254717, b: 0.8254717, a: 1}
     - _Color: {r: 0.9150943, g: 0.88919544, b: 0.88919544, a: 1}
     - _Color1: {r: 0, g: 0.7, b: 0.74, a: 0}
     - _Color2: {r: 0.97, g: 0.67, b: 0.51, a: 0}
@@ -151,7 +152,7 @@ Material:
     - _ColorDimCurve: {r: 1, g: 1, b: 1, a: 1}
     - _ColorDimExtra: {r: 0.9150943, g: 0.88919544, b: 0.88919544, a: 1}
     - _ColorDimSteps: {r: 0.6698113, g: 0.23554987, b: 0.13269846, a: 1}
-    - _ColorGradient: {r: 0.85023, g: 0.85034, b: 0.85045, a: 0.85056}
+    - _ColorGradient: {r: 1, g: 0.8254717, b: 0.8254717, a: 1}
     - _Direction: {r: 0, g: 1, b: 0, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _FlatRimColor: {r: 0.8679245, g: 0.736917, b: 0.736917, a: 1}
