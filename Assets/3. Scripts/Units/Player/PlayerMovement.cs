@@ -1,4 +1,5 @@
-﻿using _3._Scripts.Controls;
+﻿using System;
+using _3._Scripts.Controls;
 using _3._Scripts.Controls.Interfaces;
 using _3._Scripts.Controls.Scriptable;
 using _3._Scripts.Units.Animations;
@@ -11,6 +12,8 @@ namespace _3._Scripts.Units.Player
         [SerializeField] private MovementConfig config;
         [SerializeField] private Joystick joystick;
 
+
+        public float SpeedMultiplier { get; set; }
         private Rigidbody rb;
         private IMovable movable;
         private UnitAnimator animator;
@@ -19,6 +22,11 @@ namespace _3._Scripts.Units.Player
             rb = GetComponent<Rigidbody>();
             animator = GetComponent<UnitAnimator>();
             movable = new InputMovable(new JoystickInput(joystick));
+        }
+
+        private void Start()
+        {
+            SpeedMultiplier = 1;
         }
 
         private void OnEnable()
@@ -41,10 +49,10 @@ namespace _3._Scripts.Units.Player
         private void Move(Vector3 direction)
         {
             var lookRotation = Quaternion.LookRotation(direction);
-
+            var speed = config.MoveSpeed * (1 + SpeedMultiplier / 100);
             rb.transform.rotation =
                 Quaternion.Lerp(transform.rotation, lookRotation, Time.deltaTime * config.RotationSpeed);
-            rb.MovePosition(rb.position + transform.forward * direction.magnitude * config.MoveSpeed * Time.deltaTime);
+            rb.MovePosition(rb.position + transform.forward * direction.magnitude * speed * Time.deltaTime);
             animator.SetFloat("Speed", direction.magnitude);
         }
 

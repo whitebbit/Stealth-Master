@@ -9,7 +9,7 @@ namespace _3._Scripts.Units
     public abstract class Unit : MonoBehaviour, IDamageable, IDying
     {
         [SerializeField] private int maxHealth = 100;
-        protected UnitHealth Health { get; set; }
+        public UnitHealth Health { get; set; }
 
         private void Awake()
         {

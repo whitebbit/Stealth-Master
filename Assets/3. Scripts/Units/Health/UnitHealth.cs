@@ -7,7 +7,7 @@ namespace _3._Scripts.Units.Health
     {
         public event Action<float, float> OnHealthChanged;
 
-        private readonly float maxHealth;
+        private float maxHealth;
         private float currentHealth;
 
         public float Health
@@ -22,6 +22,8 @@ namespace _3._Scripts.Units.Health
             currentHealth = maxHealth;
         }
 
+        public void SetMaxHealth(float value) => maxHealth = value;
+        
         private void SetHealth(float value)
         {
             if (Health <= 0)

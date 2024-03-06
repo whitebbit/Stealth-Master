@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 066b0dc89bc048aba119bd74e70a3072, type: 3}
+  m_Name: Lara
+  m_EditorClassIdentifier: 
+  startHealth: 60
+  firstPerk: {fileID: 11400000, guid: fc40026322bf21d429ca65395f3643d6, type: 2}
+  secondPerk: {fileID: 11400000, guid: 7c7ea896b0c1ec0488e51b93269a2778, type: 2}
+  name:
+    m_keys:
+    - ru
+    - en
+    m_values:
+    - "\u041B\u043E\u0440\u0430 \u041A\u0440\u0430\u0444\u0442"
+    - Lora Kraft
+  miniIcon: {fileID: 21300000, guid: a2c7a0a0f8887b948b1dd80f035d95c7, type: 3}
+  bigIcon: {fileID: 21300000, guid: a47fadbec25394e419023ff7b3127a96, type: 3}
+  masterBigIcon: {fileID: 21300000, guid: 983cafe813b3b364ea97e39f907992c5, type: 3}
