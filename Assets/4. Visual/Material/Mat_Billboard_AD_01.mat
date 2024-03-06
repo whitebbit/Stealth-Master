@@ -9,13 +9,15 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: Mat_Billboard_AD_01
   m_Shader: {fileID: 4800000, guid: 1bd71d1b598cc0a4fb0c07b1cbcef19a, type: 3}
-  m_ValidKeywords:
-  - DR_RIM_ON
-  - _CELPRIMARYMODE_SINGLE
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
   m_InvalidKeywords:
+  - DR_RIM_ON
   - TCP2_DISABLE_WRAPPED_LIGHT
   - TCP2_MC
   - _ALLOWALPHAOVERFLOW_OFF
+  - _CELPRIMARYMODE_SINGLE
   - _TEXTUREBLENDINGMODE_MULTIPLY
   - _UNITYSHADOWMODE_NONE
   m_LightmapFlags: 4
@@ -24,6 +26,7 @@ Material:
   m_CustomRenderQueue: -1
   stringTagMap: {}
   disabledShaderPasses: []
+  m_LockedProperties: _Color
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
@@ -39,7 +42,7 @@ Material:
         m_Texture: {fileID: 2800000, guid: 5fae9d4631a244746b46a941efcb3563, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    m_Ints: {}
+    m_Ints: []
     m_Floats:
     - _AddColorEnabled: 0
     - _BumpScale: 1

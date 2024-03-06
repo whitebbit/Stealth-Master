@@ -12,6 +12,7 @@ Material:
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
+  - DR_CEL_EXTRA_ON
   - _CELPRIMARYMODE_SINGLE
   - _TEXTUREBLENDINGMODE_MULTIPLY
   m_InvalidKeywords:
@@ -62,7 +63,7 @@ Material:
     - _CameraDistanceFadeClose: 0
     - _CameraDistanceFadeFar: 10
     - _CameraDistanceImpact: 1
-    - _CelExtraEnabled: 0
+    - _CelExtraEnabled: 1
     - _CelNumSteps: 5
     - _CelPrimaryMode: 1
     - _Cull: 2
@@ -79,7 +80,7 @@ Material:
     - _FlatSpecularEdgeSmoothness: 1
     - _FlatSpecularSize: 0.723
     - _Flatness: 0.896
-    - _FlatnessExtra: 1
+    - _FlatnessExtra: 0.359
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
@@ -116,10 +117,10 @@ Material:
     - _RimMax: 0.863
     - _RimMin: 0.73
     - _Saturation: 1
-    - _SelfShadingSize: 0.705
+    - _SelfShadingSize: 0.498
     - _SelfShadingSizeExtra: 0
-    - _ShadowEdgeSize: 0.242
-    - _ShadowEdgeSizeExtra: 0.05
+    - _ShadowEdgeSize: 0.415
+    - _ShadowEdgeSizeExtra: 0.131
     - _Shininess: 0.1
     - _SmoothnessTextureChannel: 0
     - _SpecSmooth: 0.05
@@ -142,11 +143,11 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - _AddColor: {r: 1, g: 1, b: 1, a: 0}
-    - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
+    - _BaseColor: {r: 0.8962264, g: 0.8962264, b: 0.8962264, a: 1}
     - _Color: {r: 0.9150943, g: 0.88919544, b: 0.88919544, a: 1}
     - _Color1: {r: 0, g: 0.7, b: 0.74, a: 0}
     - _Color2: {r: 0.97, g: 0.67, b: 0.51, a: 0}
-    - _ColorDim: {r: 0.8490566, g: 0.6303229, b: 0.56470275, a: 1}
+    - _ColorDim: {r: 0.4433962, g: 0.33440626, b: 0.3032663, a: 1}
     - _ColorDimCurve: {r: 1, g: 1, b: 1, a: 1}
     - _ColorDimExtra: {r: 0.9150943, g: 0.88919544, b: 0.88919544, a: 1}
     - _ColorDimSteps: {r: 0.6698113, g: 0.23554987, b: 0.13269846, a: 1}
