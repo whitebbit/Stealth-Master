@@ -15,7 +15,7 @@ namespace _3._Scripts.Units.Weapons
         [SerializeField] private string id;
         [Header("Base")]
         [SerializeField] private float attackCooldown;
-        [SerializeField] private float damage;
+        [SerializeField] protected float damage;
         [Header("Animation")]
         [SerializeField] protected AnimatorOverrideController animatorController;
         [SerializeField] protected  UnitAnimator unitAnimator;
