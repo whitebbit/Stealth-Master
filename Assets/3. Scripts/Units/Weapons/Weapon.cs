@@ -29,7 +29,16 @@ namespace _3._Scripts.Units.Weapons
         {
             Detector = GetComponent<BaseDetector<IWeaponVisitor>>();
         }
+        private void OnEnable()
+        {
+            Initialize();
+        }
 
+        private void OnDisable()
+        {
+            Resetting();
+        }
+        
         public virtual void Attack(IWeaponVisitor visitor)
         {
             if (CanAttack()) return;
@@ -43,6 +52,9 @@ namespace _3._Scripts.Units.Weapons
             DoDamage(visitor);
         }
 
+        protected abstract void Initialize();
+        protected abstract void Resetting();
+        
         protected bool CanAttack()
         {
             return Time.time - LastAttackTime < attackCooldown;
