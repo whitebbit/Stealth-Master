@@ -7,14 +7,13 @@ namespace _3._Scripts.Units.Weapons
 {
     public class MeleeWeapon : Weapon
     {      
-        [Space]
-        [SerializeField]private  UnitAnimator unitAnimator;
-
         private IWeaponVisitor lastVisitor;
+        
         private void Start()
         {
             Detector.OnFound += Attack;
             unitAnimator.AnimationEvent += OnAnimationEvent;
+            unitAnimator.SetController(animatorController);
         }
 
         public override void Attack(IWeaponVisitor visitor)

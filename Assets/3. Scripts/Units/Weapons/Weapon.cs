@@ -1,20 +1,29 @@
 using System;
 using _3._Scripts.Detectors;
 using _3._Scripts.Detectors.Interfaces;
+using _3._Scripts.Units.Animations;
 using _3._Scripts.Units.Interfaces;
 using _3._Scripts.Units.Weapons.Interfaces;
+using UnityEditor.Animations;
 using UnityEngine;
 using UnityEngine.Serialization;
 
 namespace _3._Scripts.Units.Weapons
 {
     public abstract class Weapon: MonoBehaviour, IWeapon
-    {
+    { 
+        [SerializeField] private string id;
+        [Header("Base")]
         [SerializeField] private float attackCooldown;
         [SerializeField] private float damage;
+        [Header("Animation")]
+        [SerializeField] protected AnimatorOverrideController animatorController;
+        [SerializeField] protected  UnitAnimator unitAnimator;
         
         protected BaseDetector<IWeaponVisitor> Detector;
         protected float LastAttackTime;
+
+        public string ID => id;
 
         private void Awake()
         {

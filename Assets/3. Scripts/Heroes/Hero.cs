@@ -14,10 +14,11 @@ namespace _3._Scripts.Heroes
         protected Perk SecondPerk;
         
         private Player player;
-
+        private SkinnedMeshRenderer meshRenderer;
         private void Awake()
         {
             player = GetComponent<Player>();
+            meshRenderer = GetComponentInChildren<SkinnedMeshRenderer>();
         }
 
         private void Start()
@@ -30,7 +31,7 @@ namespace _3._Scripts.Heroes
 
         protected abstract void InitializePerks();
 
-        protected void ActivatePerks()
+        private void ActivatePerks()
         {
             if(true)
                 FirstPerk.Activate();

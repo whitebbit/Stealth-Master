@@ -9,11 +9,9 @@ namespace _3._Scripts.Units.Weapons
 {
     public class RangeWeapon: Weapon
     {
-        [Space]
-        [SerializeField] private UnitAnimator unitAnimator;
+        [Header("IK")]
         [SerializeField] private AimIK aimIK;
         
-        private IWeaponVisitor lastVisitor;
         
         private void Start()
         {
@@ -29,9 +27,8 @@ namespace _3._Scripts.Units.Weapons
             if (CanAttack()) return;
             
             LastAttackTime = Time.time;
-            lastVisitor = visitor;
             
-            aimIK.solver.target = lastVisitor.Transform();
+            aimIK.solver.target = visitor.Transform();
             aimIK.solver.IKPositionWeight = 1;
             
             DoAnimation();
@@ -49,7 +46,6 @@ namespace _3._Scripts.Units.Weapons
             PlaySound();
             PerformAttack();
             CreateParticle();
-            //DoDamage(lastVisitor);
         }
     }
 }
