@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using _3._Scripts.Detectors;
 using _3._Scripts.Detectors.Interfaces;
 using _3._Scripts.Units.Animations;
@@ -14,7 +15,7 @@ namespace _3._Scripts.Units.Weapons
     { 
         [SerializeField] private string id;
         [Header("Base")]
-        [SerializeField] private float attackCooldown;
+        [SerializeField] protected float attackCooldown;
         [SerializeField] protected float damage;
         [Header("Animation")]
         [SerializeField] protected AnimatorOverrideController animatorController;
