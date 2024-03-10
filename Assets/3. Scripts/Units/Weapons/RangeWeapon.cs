@@ -46,11 +46,12 @@ namespace _3._Scripts.Units.Weapons
         protected override void Initialize()
         {
             Detector.OnFound += Attack;
-            unitAnimator.AnimationEvent += OnAnimationEvent;
-            unitAnimator.SetController(animatorController);
 
             aimIK.solver.transform = transform;
             aimIK.solver.IKPositionWeight = 0;
+            
+            unitAnimator.SetController(animatorController);
+            unitAnimator.AnimationEvent += OnAnimationEvent;
         }
 
         protected override void Resetting()
@@ -84,7 +85,6 @@ namespace _3._Scripts.Units.Weapons
                 case "RangeAttack":
                     PerformAttack();
                     PlaySound();
-                    CreateParticle();
                     break;
                 case "AnimationEnd":
                     aimIKWeight = 0;
@@ -106,6 +106,8 @@ namespace _3._Scripts.Units.Weapons
                     Random.Range(-spreadFactor, spreadFactor), Random.Range(-spreadFactor, spreadFactor));
                 var direction = lastVisitor.Transform().position - position + spread;
                 var b = Instantiate(bullet, position, Quaternion.LookRotation(direction));
+                
+                CreateParticle();
 
                 b.SetDamage(damage);
                 b.AddForce(direction, 10);

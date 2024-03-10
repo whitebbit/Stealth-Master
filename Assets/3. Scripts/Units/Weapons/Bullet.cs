@@ -20,6 +20,8 @@ namespace _3._Scripts.Units.Weapons
 
         private void OnCollisionEnter(Collision other)
         {
+            
+            Debug.Log(other.gameObject.name);
             if (other.gameObject.TryGetComponent(out IWeaponVisitor visitor))
             {
                 visitor.Visit(damage);

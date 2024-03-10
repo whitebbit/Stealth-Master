@@ -30,14 +30,9 @@ namespace _3._Scripts.Units.Weapons
         {
             Detector = GetComponent<BaseDetector<IWeaponVisitor>>();
         }
-        private void OnEnable()
+        private void Start()
         {
             Initialize();
-        }
-
-        private void OnDisable()
-        {
-            Resetting();
         }
         
         public virtual void Attack(IWeaponVisitor visitor)
