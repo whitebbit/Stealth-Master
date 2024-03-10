@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4968823330693075}
   - component: {fileID: 33634667785254679}
   - component: {fileID: 23286508735955943}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BossBullet_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 4249463820731203}
   - component: {fileID: 33173693359387638}
   - component: {fileID: 23213882210403489}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BossBullet_0_outline
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -178,7 +178,7 @@ GameObject:
   - component: {fileID: 4256568114782841}
   - component: {fileID: 198733456771458802}
   - component: {fileID: 199535200026778151}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: smoke
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2494,7 +2494,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4782520468836263}
   - component: {fileID: 96554969742526850}
-  m_Layer: 18
+  m_Layer: 7
   m_Name: Trail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2649,7 +2649,7 @@ GameObject:
   - component: {fileID: 4463760443676016}
   - component: {fileID: 198655403017393876}
   - component: {fileID: 199853989015537960}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: FX_Gun_Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5082,10 +5082,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4289877195237395}
-  - component: {fileID: 135853925276848536}
   - component: {fileID: 54435674329813535}
   - component: {fileID: 5960594776773505285}
-  m_Layer: 18
+  - component: {fileID: 388194468771769495}
+  m_Layer: 7
   m_Name: uziBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5110,27 +5110,6 @@ Transform:
   - {fileID: 4968823330693075}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: -0, z: -0}
---- !u!135 &135853925276848536
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1850065635971093}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.4
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &54435674329813535
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5171,4 +5150,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rigidbody: {fileID: 54435674329813535}
+  model: {fileID: 4968823330693075}
   decal: {fileID: 198655403017393876}
+--- !u!136 &388194468771769495
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1850065635971093}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.21
+  m_Height: 0.53
+  m_Direction: 2
+  m_Center: {x: 0, y: 0, z: 0}

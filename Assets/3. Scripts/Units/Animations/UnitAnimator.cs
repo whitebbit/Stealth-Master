@@ -37,5 +37,14 @@ namespace _3._Scripts.Units.Animations
         {
             AnimationEvent?.Invoke(key);
         }
+
+        public Transform GetBoneTransform(HumanBodyBones bones)
+        {
+            return animator.GetBoneTransform(bones);
+        }
+        public Vector3 GetIKPosition(AvatarIKGoal avatarIKGoal)
+        {
+            return animator.GetIKPosition(avatarIKGoal);
+        }
     }
 }
