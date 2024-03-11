@@ -3,6 +3,7 @@ using System.Collections;
 using _3._Scripts.Units.Animations;
 using _3._Scripts.Units.Animations.IK;
 using _3._Scripts.Units.Interfaces;
+using _3._Scripts.Units.Weapons.Scriptable;
 using RootMotion.FinalIK;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -12,15 +13,13 @@ namespace _3._Scripts.Units.Weapons
 {
     public class RangeWeapon : Weapon
     {
-        [Header("Range Weapon Settings")] [SerializeField]
-        private int bulletCount;
+        [SerializeField] private AimIK aimIK;
 
-        [SerializeField] private float spreadFactor;
-        [SerializeField] private float attackSpeed;
-        [Space] [SerializeField] private Bullet bullet;
+        [Header("Range Weapon")] [SerializeField]
+        private RangeWeaponData rangeWeaponData;
+
         [SerializeField] private ParticleSystem muzzleEffect;
 
-        [Header("IK")] [SerializeField] private AimIK aimIK;
         private float aimIKWeight;
 
         private IWeaponVisitor lastVisitor;
@@ -48,7 +47,7 @@ namespace _3._Scripts.Units.Weapons
             Detector.OnFound += Attack;
             unitAnimator.AnimationEvent += OnAnimationEvent;
 
-            unitAnimator.SetController(animatorController);
+            unitAnimator.SetController(data.AnimatorController);
 
             aimIK.solver.transform = transform;
             aimIK.solver.IKPositionWeight = 0;
@@ -100,20 +99,22 @@ namespace _3._Scripts.Units.Weapons
 
         private IEnumerator DelayedPerformAttack()
         {
-            for (var i = 0; i < bulletCount; i++)
+            var shoulder = unitAnimator.GetBoneTransform(HumanBodyBones.RightShoulder);
+            var position = shoulder.position;
+            var direction = lastVisitor.Transform().position - position;
+            var spreadFactor = rangeWeaponData.SpreadFactor;
+            
+            for (var i = 0; i < rangeWeaponData.BulletCount; i++)
             {
-                var shoulder = unitAnimator.GetBoneTransform(HumanBodyBones.RightShoulder);
-                var position = shoulder.position;
                 var spread = new Vector3(Random.Range(-spreadFactor, spreadFactor),
                     Random.Range(-spreadFactor, spreadFactor), Random.Range(-spreadFactor, spreadFactor));
-                var direction = lastVisitor.Transform().position - position + spread;
-                var b = Instantiate(bullet, position, Quaternion.LookRotation(direction));
+                var b = Instantiate(rangeWeaponData.Bullet, position, Quaternion.LookRotation(direction + spread));
 
                 CreateParticle();
 
-                b.SetDamage(damage);
-                b.AddForce(direction, 15);
-                yield return new WaitForSeconds(attackSpeed);
+                b.SetDamage(data.Damage);
+                b.AddForce(direction + spread, 15);
+                yield return new WaitForSeconds(rangeWeaponData.AttackSpeed);
             }
         }
     }

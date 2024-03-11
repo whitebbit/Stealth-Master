@@ -5,6 +5,7 @@ using _3._Scripts.Detectors.Interfaces;
 using _3._Scripts.Units.Animations;
 using _3._Scripts.Units.Interfaces;
 using _3._Scripts.Units.Weapons.Interfaces;
+using _3._Scripts.Units.Weapons.Scriptable;
 using UnityEditor.Animations;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -12,19 +13,15 @@ using UnityEngine.Serialization;
 namespace _3._Scripts.Units.Weapons
 {
     public abstract class Weapon: MonoBehaviour, IWeapon
-    { 
-        [SerializeField] private string id;
-        [Header("Base")]
-        [SerializeField] protected float attackCooldown;
-        [SerializeField] protected float damage;
-        [Header("Animation")]
-        [SerializeField] protected AnimatorOverrideController animatorController;
+    {
+        [SerializeField] protected WeaponData data;
+        [Header("Components")]
         [SerializeField] protected  UnitAnimator unitAnimator;
         
         protected BaseDetector<IWeaponVisitor> Detector;
         protected float LastAttackTime;
 
-        public string ID => id;
+        public string ID => data.ID;
 
         private void Awake()
         {
@@ -53,7 +50,7 @@ namespace _3._Scripts.Units.Weapons
         
         protected bool CanAttack()
         {
-            return Time.time - LastAttackTime < attackCooldown;
+            return Time.time - LastAttackTime < data.AttackCooldown;
         }
 
         protected virtual void PerformAttack()
@@ -78,7 +75,7 @@ namespace _3._Scripts.Units.Weapons
 
         protected virtual void DoDamage(IWeaponVisitor visitor)
         {
-            visitor.Visit(damage);
+            visitor.Visit(data.Damage);
         }
     }
 }

@@ -23,7 +23,7 @@ namespace _3._Scripts.Units.Weapons
         {
             Detector.OnFound += Attack;
             unitAnimator.AnimationEvent += OnAnimationEvent;
-            unitAnimator.SetController(animatorController);
+            unitAnimator.SetController(data.AnimatorController);
         }
 
         protected override void Resetting()

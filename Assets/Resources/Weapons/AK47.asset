@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a032bdceaa9a40fdaade12c2e92b9f6a, type: 3}
+  m_Name: AK47
+  m_EditorClassIdentifier: 
+  id: ak47
+  attackCooldown: 2
+  damage: 100
+  animatorController: {fileID: 22100000, guid: 881f4904e47ee354cac9ff002a401f20, type: 2}
+  name:
+    m_keys:
+    - ru
+    - en
+    m_values:
+    - AK-47
+    - AK-47
+  icon: {fileID: 21300000, guid: 8fa04c84881cc2e4a81269cd7bb95f0a, type: 3}
