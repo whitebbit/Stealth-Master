@@ -17,7 +17,7 @@ namespace _3._Scripts.Units.Weapons
 
         [SerializeField] private float spreadFactor;
         [SerializeField] private float attackSpeed;
-        [SerializeField] private Bullet bullet;
+        [Space] [SerializeField] private Bullet bullet;
         [SerializeField] private ParticleSystem muzzleEffect;
 
         [Header("IK")] [SerializeField] private AimIK aimIK;
@@ -46,12 +46,12 @@ namespace _3._Scripts.Units.Weapons
         protected override void Initialize()
         {
             Detector.OnFound += Attack;
+            unitAnimator.AnimationEvent += OnAnimationEvent;
+
+            unitAnimator.SetController(animatorController);
 
             aimIK.solver.transform = transform;
             aimIK.solver.IKPositionWeight = 0;
-            
-            unitAnimator.SetController(animatorController);
-            unitAnimator.AnimationEvent += OnAnimationEvent;
         }
 
         protected override void Resetting()
@@ -75,6 +75,7 @@ namespace _3._Scripts.Units.Weapons
 
         protected override void PerformAttack()
         {
+            StopAllCoroutines();
             StartCoroutine(DelayedPerformAttack());
         }
 
@@ -101,16 +102,17 @@ namespace _3._Scripts.Units.Weapons
         {
             for (var i = 0; i < bulletCount; i++)
             {
-                var position = unitAnimator.GetBoneTransform(HumanBodyBones.RightShoulder).position;
+                var shoulder = unitAnimator.GetBoneTransform(HumanBodyBones.RightShoulder);
+                var position = shoulder.position;
                 var spread = new Vector3(Random.Range(-spreadFactor, spreadFactor),
                     Random.Range(-spreadFactor, spreadFactor), Random.Range(-spreadFactor, spreadFactor));
                 var direction = lastVisitor.Transform().position - position + spread;
                 var b = Instantiate(bullet, position, Quaternion.LookRotation(direction));
-                
+
                 CreateParticle();
 
                 b.SetDamage(damage);
-                b.AddForce(direction, 10);
+                b.AddForce(direction, 15);
                 yield return new WaitForSeconds(attackSpeed);
             }
         }
