@@ -42,7 +42,7 @@ namespace _3._Scripts.Detectors.OverlapSystem.Base
                     var startPosition = startPoint.position;
                     var colliderPosition = OverlapResults[i].transform.position;
                     var hasObstacle = Physics.Linecast(startPosition, colliderPosition, obstacleLayer);
-                    
+                    Debug.Log(hasObstacle);
                     if(hasObstacle) continue;
                 }
                 

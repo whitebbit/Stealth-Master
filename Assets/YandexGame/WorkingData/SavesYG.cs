@@ -1,5 +1,4 @@
-﻿
-using _3._Scripts.Saves;
+﻿using _3._Scripts.Saves;
 using UnityEngine.Serialization;
 
 namespace YG
@@ -12,7 +11,7 @@ namespace YG
         public bool isFirstSession = true;
         public string language = "ru";
         public bool promptDone;
-        
+
         // Ваши сохранения
 
         public PlayerSave playerSave = new();
@@ -23,7 +22,6 @@ namespace YG
         // Вы можете выполнить какие то действия при загрузке сохранений
         public SavesYG()
         {
-            
         }
     }
 }

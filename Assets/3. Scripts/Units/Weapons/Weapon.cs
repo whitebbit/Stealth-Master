@@ -1,15 +1,9 @@
-using System;
-using System.Collections;
 using _3._Scripts.Detectors;
-using _3._Scripts.Detectors.Interfaces;
 using _3._Scripts.Units.Animations;
 using _3._Scripts.Units.Interfaces;
 using _3._Scripts.Units.Weapons.Interfaces;
 using _3._Scripts.Units.Weapons.Scriptable;
-using UnityEditor.Animations;
 using UnityEngine;
-using UnityEngine.Serialization;
-
 namespace _3._Scripts.Units.Weapons
 {
     public abstract class Weapon: MonoBehaviour, IWeapon
