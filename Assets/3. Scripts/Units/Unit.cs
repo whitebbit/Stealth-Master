@@ -14,6 +14,7 @@ namespace _3._Scripts.Units
         private void Awake()
         {
             Health = new UnitHealth(maxHealth);
+            OnAwake();
         }
 
         private void Start()
@@ -32,6 +33,11 @@ namespace _3._Scripts.Units
         public virtual void Dead()
         {
             Destroy(gameObject);
+        }
+
+        protected virtual void OnAwake()
+        {
+            
         }
     }
 }

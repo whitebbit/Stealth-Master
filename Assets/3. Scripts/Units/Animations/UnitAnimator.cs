@@ -15,6 +15,11 @@ namespace _3._Scripts.Units.Animations
             if (animator == null) animator = GetComponentInChildren<Animator>();
         }
 
+        public void SetState(bool state)
+        {
+            animator.enabled = state;
+        }
+        
         public void SetTrigger(string key)
         {
             if (animator == null) return;

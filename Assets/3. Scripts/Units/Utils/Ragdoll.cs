@@ -6,19 +6,24 @@ namespace _3._Scripts.Units.Utils
 {
     public class Ragdoll : MonoBehaviour
     {
+        public event Action<bool> onStateChanged; 
         [SerializeField] private bool state;
-
+        
         private List<Rigidbody> rigidbodies = new();
         private List<Collider> colliders = new();
 
+        private Rigidbody mainRigidbody;
+        private Collider mainCollider;
+        
         public bool State
         {
-            get => state;
             set
             {
                 state = value;
                 CollidersState(state);
                 RigidbodiesState(state);
+                
+                onStateChanged?.Invoke(state);
             }
         }
 
@@ -32,8 +37,7 @@ namespace _3._Scripts.Units.Utils
 
         private void Update()
         {
-            if (State != state)
-                State = state;
+            State = state;
         }
 
 #endif
@@ -45,22 +49,26 @@ namespace _3._Scripts.Units.Utils
         private void InitializeColliders()
         {
             colliders = new List<Collider>(GetComponentsInChildren<Collider>());
-            var coll = GetComponent<Collider>();
-            if (coll != null)
-                colliders.Remove(coll);
+            mainCollider = GetComponent<Collider>();
+            
+            if (mainCollider != null)
+                colliders.Remove(mainCollider);
         }
 
         private void InitializeRigidbodies()
         {
             rigidbodies = new List<Rigidbody>(GetComponentsInChildren<Rigidbody>());
-            var rb = GetComponent<Rigidbody>();
-            if (rb != null)
-                rigidbodies.Remove(rb);
+            mainRigidbody = GetComponent<Rigidbody>();
+            if (mainRigidbody != null)
+                rigidbodies.Remove(mainRigidbody);
         }
 
 
         private void CollidersState(bool state)
         {
+            if (mainCollider != null)
+                mainCollider.enabled = !state;
+            
             foreach (var collider in colliders)
             {
                 collider.enabled = state;
@@ -69,6 +77,9 @@ namespace _3._Scripts.Units.Utils
 
         private void RigidbodiesState(bool state)
         {
+            if (mainRigidbody != null)
+                mainRigidbody.isKinematic = state;
+            
             foreach (var rigidbody in rigidbodies)
             {
                 rigidbody.isKinematic = !state;
