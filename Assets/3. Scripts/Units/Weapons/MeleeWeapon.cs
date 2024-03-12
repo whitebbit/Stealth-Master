@@ -21,14 +21,14 @@ namespace _3._Scripts.Units.Weapons
 
         protected override void Initialize()
         {
-            Detector.OnFound += Attack;
+            detector.OnFound += Attack;
             unitAnimator.AnimationEvent += OnAnimationEvent;
             unitAnimator.SetController(data.AnimatorController);
         }
 
         protected override void Resetting()
         {
-            Detector.OnFound -= Attack;
+            detector.OnFound -= Attack;
             unitAnimator.AnimationEvent -= OnAnimationEvent;
         }
 

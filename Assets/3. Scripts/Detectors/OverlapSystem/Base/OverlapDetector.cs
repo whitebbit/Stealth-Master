@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using _3._Scripts.Detectors.Interfaces;
 using _3._Scripts.Gizmos;
 using _3._Scripts.Gizmos.Enums;
@@ -21,16 +22,12 @@ namespace _3._Scripts.Detectors.OverlapSystem.Base
         
         protected readonly Collider[] OverlapResults = new Collider[32];
         private int overlapResultsCount;
-
-
-        private void Update()
-        {
-            if (ObjectsDetected())
-            {
-                InteractWithFoundedObjects();
-            }
-        }
         
+        private void Start()
+        {
+            StartCoroutine(FindTargetsWithDelay(.2f));
+        }
+
         private void InteractWithFoundedObjects()
         {
             for (var i = 0; i < overlapResultsCount; i++)
@@ -54,6 +51,18 @@ namespace _3._Scripts.Detectors.OverlapSystem.Base
             overlapResultsCount = GetOverlapResult(position);
             
             return overlapResultsCount > 0;
+        }
+        
+        private IEnumerator FindTargetsWithDelay(float delay)
+        {
+            while (true)
+            {
+                yield return new WaitForSeconds(delay);
+                if (ObjectsDetected())
+                {
+                    InteractWithFoundedObjects();
+                }
+            }
         }
         
         protected abstract int GetOverlapResult(Vector3 position);
