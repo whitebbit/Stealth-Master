@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 066b0dc89bc048aba119bd74e70a3072, type: 3}
+  m_Name: Ninja
+  m_EditorClassIdentifier: 
+  id: ninja
+  startHealth: 60
+  firstPerk: {fileID: 11400000, guid: 0828e3bd58d9d4c42a160a72b1028a76, type: 2}
+  secondPerk: {fileID: 11400000, guid: d6f3820ab95a79741af4345a0c9e0d88, type: 2}
+  name:
+    m_keys:
+    - ru
+    - en
+    m_values:
+    - "\u041D\u0438\u043D\u0434\u0437\u044F"
+    - Ninja
+  miniIcon: {fileID: 21300000, guid: 521a11695bd6d5b44a8b23deb71d1701, type: 3}
+  bigIcon: {fileID: 21300000, guid: ef9e6d7acf98bec4093ef76d77a23aab, type: 3}
