@@ -15,7 +15,6 @@ namespace _3._Scripts.Units.Weapons
         [Header("Components")] [SerializeField]
         protected UnitAnimator unitAnimator;
 
-        [SerializeField] protected BaseDetector<IWeaponVisitor> detector;
         protected float LastAttackTime;
 
         public string ID => data.ID;

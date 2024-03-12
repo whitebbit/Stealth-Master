@@ -13,7 +13,7 @@ namespace _3._Scripts.Units.Weapons
 {
     public class RangeWeapon : Weapon
     {
-        [SerializeField] private AimIK aimIK;
+        [SerializeField] protected AimIK aimIK;
 
         [Header("Range Weapon")] [SerializeField]
         private RangeWeaponData rangeWeaponData;
@@ -44,7 +44,6 @@ namespace _3._Scripts.Units.Weapons
 
         protected override void Initialize()
         {
-            detector.OnFound += Attack;
             unitAnimator.AnimationEvent += OnAnimationEvent;
 
             unitAnimator.SetController(data.AnimatorController);
@@ -55,7 +54,6 @@ namespace _3._Scripts.Units.Weapons
 
         protected override void Resetting()
         {
-            detector.OnFound -= Attack;
             unitAnimator.AnimationEvent -= OnAnimationEvent;
 
             aimIK.solver.transform = null;
@@ -78,7 +76,7 @@ namespace _3._Scripts.Units.Weapons
             StartCoroutine(DelayedPerformAttack());
         }
 
-        private void OnAnimationEvent(string key)
+        protected void OnAnimationEvent(string key)
         {
             switch (key)
             {
@@ -113,7 +111,7 @@ namespace _3._Scripts.Units.Weapons
                 CreateParticle();
 
                 b.SetDamage(data.Damage);
-                b.AddForce(direction + spread, 15);
+                b.AddForce(direction + spread, rangeWeaponData.Force);
                 yield return new WaitForSeconds(rangeWeaponData.AttackSpeed);
             }
         }

@@ -32,7 +32,7 @@ namespace _3._Scripts.Units
 
         public virtual void Dead()
         {
-            Destroy(gameObject);
+            
         }
 
         protected virtual void OnAwake()

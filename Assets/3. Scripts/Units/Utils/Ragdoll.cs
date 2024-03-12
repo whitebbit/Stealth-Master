@@ -7,7 +7,7 @@ namespace _3._Scripts.Units.Utils
     public class Ragdoll : MonoBehaviour
     {
         public event Action<bool> onStateChanged; 
-        [SerializeField] private bool state;
+        private bool state;
         
         private List<Rigidbody> rigidbodies = new();
         private List<Collider> colliders = new();
@@ -37,7 +37,7 @@ namespace _3._Scripts.Units.Utils
 
         private void Update()
         {
-            State = state;
+            //State = state;
         }
 
 #endif
