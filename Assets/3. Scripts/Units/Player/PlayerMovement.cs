@@ -51,13 +51,10 @@ namespace _3._Scripts.Units.Player
             var lookRotation = Quaternion.LookRotation(direction);
             var speed = config.MoveSpeed * (1 + SpeedMultiplier / 100);
             var t = rb.transform;
-            var targetVelocity = t.forward * direction.magnitude * speed;
-            
+
             t.rotation =
                 Quaternion.Lerp(t.rotation, lookRotation, Time.deltaTime * config.RotationSpeed);
-            //rb.MovePosition(t.position + t.forward * direction.magnitude * speed * Time.deltaTime);
-            
-            rb.velocity = t.forward * direction.magnitude * config.MoveSpeed ;
+            rb.velocity = t.forward * direction.magnitude * speed;
             animator.SetFloat("Speed", direction.magnitude);
         }
 

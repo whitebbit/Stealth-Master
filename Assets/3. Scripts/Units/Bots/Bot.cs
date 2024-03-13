@@ -27,12 +27,12 @@ namespace _3._Scripts.Units.Bots
         protected override void OnAwake()
         {
             InitializeComponents();
-            InitializeFSM();
         }
         
         protected override void OnStart()
         {
             ragdoll.onStateChanged += ChangeStateByRagdoll;
+            InitializeFSM();
         }
 
         protected abstract void InitializeFSM();
