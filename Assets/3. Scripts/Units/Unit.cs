@@ -8,8 +8,9 @@ namespace _3._Scripts.Units
 {
     public abstract class Unit : MonoBehaviour, IDamageable, IDying
     {
+        [Header("Unit Settings")]
         [SerializeField] private int maxHealth = 100;
-        public UnitHealth Health { get; set; }
+        public UnitHealth Health { get; private set; }
 
         private void Awake()
         {
@@ -23,6 +24,7 @@ namespace _3._Scripts.Units
             {
                 if (current <= 0) Dead();
             };
+            OnStart();
         }
 
         public virtual void ApplyDamage(float damage)
@@ -36,6 +38,10 @@ namespace _3._Scripts.Units
         }
 
         protected virtual void OnAwake()
+        {
+            
+        }
+        protected virtual void OnStart()
         {
             
         }
