@@ -85,6 +85,7 @@ namespace _3._Scripts.Units.Weapons
                     PlaySound();
                     break;
                 case "AnimationEnd":
+                    CallOnAttackEnd();
                     aimIKWeight = 0;
                     break;
             }

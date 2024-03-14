@@ -1,3 +1,4 @@
+using System;
 using _3._Scripts.Detectors;
 using _3._Scripts.Units.Animations;
 using _3._Scripts.Units.Interfaces;
@@ -16,7 +17,7 @@ namespace _3._Scripts.Units.Weapons
         protected UnitAnimator unitAnimator;
 
         protected float LastAttackTime;
-
+        public event Action OnAttackEnd;
         public string ID => data.ID;
 
         private void Start()
@@ -64,6 +65,11 @@ namespace _3._Scripts.Units.Weapons
         protected virtual void DoDamage(IWeaponVisitor visitor)
         {
             visitor.Visit(data.Damage);
+        }
+
+        protected virtual void CallOnAttackEnd()
+        {
+            OnAttackEnd?.Invoke();
         }
     }
 }

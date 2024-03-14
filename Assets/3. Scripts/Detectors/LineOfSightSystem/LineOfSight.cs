@@ -36,12 +36,10 @@ namespace _3._Scripts.Detectors.LineOfSightSystem
 
         private void FindVisibleTargets()
         {
-            if (!ObjectsDetected())
-            {
-                visibleTargets.Clear();
-                CallOnFound(default);
-                return;
-            }
+            visibleTargets.Clear();
+            CallOnFound(default);
+            
+            if (!ObjectsDetected()) return;
             
             for (var i = 0; i < overlapResultsCount; i++)
             {

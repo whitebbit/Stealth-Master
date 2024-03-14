@@ -9,22 +9,23 @@ namespace _3._Scripts.FSM
 {
     public class StateMachine
     {
+        public IState CurrentState => _current.State;
+        
         private StateNode _current;
         private readonly Dictionary<Type, StateNode> _nodes = new();
         private readonly HashSet<ITransition> _anyTransitions = new();
-
         public void Update()
         {
             var transition = GetTransition();
             if (transition != null)
                 ChangeState(transition.To);
 
-            _current.State?.Update();
+            CurrentState?.Update();
         }
 
         public void FixedUpdate()
         {
-            _current.State?.FixedUpdate();
+            CurrentState?.FixedUpdate();
         }
 
         public void SetState(IState state)
@@ -37,7 +38,7 @@ namespace _3._Scripts.FSM
         {
             if (state == _current.State) return;
 
-            var previousState = _current.State;
+            var previousState = CurrentState;
             var nextState = _nodes[state.GetType()].State;
 
             previousState?.OnExit();
