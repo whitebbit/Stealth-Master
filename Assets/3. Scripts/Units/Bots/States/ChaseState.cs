@@ -42,6 +42,7 @@ namespace _3._Scripts.Units.Bots.States
         {
             agent.isStopped = false;
             animator.SetFloat("Speed", 1);
+            Debug.Log(VisitorLastPosition);
             agent.SetDestination(VisitorLastPosition);
         }
         

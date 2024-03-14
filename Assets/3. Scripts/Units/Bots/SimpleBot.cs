@@ -31,6 +31,9 @@ namespace _3._Scripts.Units.Bots
             {
                 attackState.LastVisitor = visitor;
                 visitorDetected = visitor != default;
+                
+                if (visitor != default) 
+                    chaseState.VisitorLastPosition = visitor.Transform().position;
             }
 
             if (Fsm.StateMachine.CurrentState == attackState)
@@ -38,6 +41,7 @@ namespace _3._Scripts.Units.Bots
                 attackState.LastVisitor = visitor;
                 visitorDetected = visitor != default;
                 chasing = true;
+                
                 if (visitor != default) 
                     chaseState.VisitorLastPosition = visitor.Transform().position;
             }
