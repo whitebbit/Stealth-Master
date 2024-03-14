@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -22,17 +23,25 @@ namespace _3._Scripts.Detectors.LineOfSightSystem
         private readonly Collider[] overlapResults = new Collider[32];
         private int overlapResultsCount;
 
-        private void Start()
+        private void Awake()
         {
             viewMesh = new Mesh { name = "View Mesh" };
             GetComponent<MeshFilter>().mesh = viewMesh;
-            GetComponent<MeshRenderer>();
+        }
+
+        private void Start()
+        {
             StartCoroutine(FindTargetsWithDelay(.2f));
         }
 
         private void FindVisibleTargets()
         {
-            if (!ObjectsDetected()) return;
+            if (!ObjectsDetected())
+            {
+                visibleTargets.Clear();
+                CallOnFound(default);
+                return;
+            }
             
             for (var i = 0; i < overlapResultsCount; i++)
             {
@@ -44,6 +53,7 @@ namespace _3._Scripts.Detectors.LineOfSightSystem
                 var dstToTarget = Vector3.Distance(transform.position, target.position);
                 if (Physics.Raycast(transform.position, dirToTarget, dstToTarget, obstacleMask)) continue;
                 
+                visibleTargets.Add(findable);
                 CallOnFound(findable);
             }
         }

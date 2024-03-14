@@ -1,7 +1,9 @@
 using System;
+using _3._Scripts.Detectors;
 using _3._Scripts.FSM.Base;
 using _3._Scripts.Units.Animations;
 using _3._Scripts.Units.Bots.States;
+using _3._Scripts.Units.Interfaces;
 using _3._Scripts.Units.Player;
 using _3._Scripts.Units.Utils;
 using RootMotion.FinalIK;
@@ -12,6 +14,8 @@ namespace _3._Scripts.Units.Bots
 {
     public abstract class Bot: Unit
     {
+        [Header("Bot Settings")]
+        [SerializeField] protected BaseDetector<IWeaponVisitor> detector;
         private UnitAnimator unitAnimator;
         private NavMeshAgent navMeshAgent;
         private AimIK aimIK;
@@ -32,10 +36,13 @@ namespace _3._Scripts.Units.Bots
         protected override void OnStart()
         {
             ragdoll.onStateChanged += ChangeStateByRagdoll;
+            detector.OnFound += OnDetectorFind;
             InitializeFSM();
         }
 
         protected abstract void InitializeFSM();
+
+        protected abstract void OnDetectorFind(IWeaponVisitor visitor);
         
         private void InitializeComponents()
         {
