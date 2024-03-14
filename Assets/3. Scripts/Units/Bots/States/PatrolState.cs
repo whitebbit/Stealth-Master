@@ -34,12 +34,8 @@ namespace _3._Scripts.Units.Bots.States
 
         public override void Update()
         {
-            switch (points.Count)
-            {
-                case > 1:
+
                     PatrolInPoints();
-                    break;
-            }
         }
 
         public override void OnExit()
@@ -57,7 +53,10 @@ namespace _3._Scripts.Units.Bots.States
                     StopMoving();
                     break;
                 case PatrolType.Rotation:
-                    PatrolByRotation();
+                    if (points.Count > 1)
+                        PatrolByPointsRotation();
+                    else
+                        PatrolBySelfRotation();
                     break;
                 case PatrolType.PointToPoint:
                     if (points.Count > 1)
@@ -73,6 +72,7 @@ namespace _3._Scripts.Units.Bots.States
 
         private void PatrolInPoints()
         {
+            if (points.Count <= 1 || type != PatrolType.PointToPoint) return;
             if (agent.pathPending || !(agent.remainingDistance < 0.25f)) return;
 
             StopMoving();
@@ -85,13 +85,21 @@ namespace _3._Scripts.Units.Bots.States
             timer = 0f;
         }
 
-        private void PatrolByRotation()
+        private void PatrolBySelfRotation()
         {
             var target = agent.transform.eulerAngles + new Vector3(0, 180, 0);
-            rotationTween = agent.transform.DORotate(target, speed)
+            rotationTween = agent.transform.DORotate(target, speed, RotateMode.FastBeyond360)
                 .SetDelay(pauseDuration)
-                .SetRelative(true)
-                .OnComplete(PatrolByRotation);
+                .OnComplete(PatrolBySelfRotation);
+        }
+        private void PatrolByPointsRotation()
+        {
+            var target = points[currentPoint].position;
+            rotationTween = agent.transform.DOLookAt(target, speed, AxisConstraint.Y)
+                .SetDelay(pauseDuration)
+                .OnComplete(PatrolByPointsRotation);
+            
+            currentPoint = (currentPoint + 1) % points.Count;
         }
 
         private void StartMoving()
