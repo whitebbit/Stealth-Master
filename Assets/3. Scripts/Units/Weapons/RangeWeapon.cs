@@ -31,6 +31,7 @@ namespace _3._Scripts.Units.Weapons
 
         public override void Attack(IWeaponVisitor visitor)
         {
+            if (visitor == default) return;
             if (CanAttack()) return;
 
             LastAttackTime = Time.time;
@@ -102,7 +103,7 @@ namespace _3._Scripts.Units.Weapons
             var position = shoulder.position;
             var direction = lastVisitor.Transform().position - position;
             var spreadFactor = rangeWeaponData.SpreadFactor;
-            
+
             for (var i = 0; i < rangeWeaponData.BulletCount; i++)
             {
                 var spread = new Vector3(Random.Range(-spreadFactor, spreadFactor),

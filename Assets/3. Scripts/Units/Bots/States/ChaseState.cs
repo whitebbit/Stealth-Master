@@ -1,65 +1,71 @@
 using System;
 using _3._Scripts.FSM.Base;
-using _3._Scripts.Units.Animations;
-using _3._Scripts.Units.Bots.Enums;
+using _3._Scripts.Units.Interfaces;
 using UnityEngine;
-using UnityEngine.AI;
 
 namespace _3._Scripts.Units.Bots.States
 {
     [Serializable]
-    public class ChaseState: State
+    public class ChaseState : State
     {
-        [Header("Components")] [SerializeField]
-        private NavMeshAgent agent;
-        [SerializeField] private UnitAnimator animator;
-        [Header("Settings")]
-        [SerializeField] private float speed;
+        public UnitNavMeshAgent UnitAgent { get; set; }
+
+        [Header("Settings")] [SerializeField] private float speed;
+        [SerializeField] private float chasingTime;
         [SerializeField] private float stoppingDistance = 1;
-        
-        public Vector3 VisitorLastPosition { get; set; }
-        public event Action onChasingFinish;
+
+        public IWeaponVisitor LastVisitor { get; set; }
+        public event Action OnChasingFinish;
+        private float timer;
+        private bool goToVisitorLastPosition;
+
         public override void OnEnter()
         {
             base.OnEnter();
-            agent.speed = speed;
-            agent.stoppingDistance = stoppingDistance;
-            StartMoving();
+            goToVisitorLastPosition = false;
+            timer = 0;
+            UnitAgent.Agent.speed = speed;
+            UnitAgent.Agent.stoppingDistance = stoppingDistance;
         }
 
         public override void Update()
         {
+            ChaseVisitor();
+            MoveToVisitorLastPosition();
             CheckFinishPoint();
+        }
+
+        private void MoveToVisitorLastPosition()
+        {
+            if (!(timer >= chasingTime)) return;
+            if (goToVisitorLastPosition) return;
+
+            goToVisitorLastPosition = true;
+            UnitAgent.StartMoving(LastVisitor.Transform().position);
+        }
+
+        private void ChaseVisitor()
+        {
+            if ((timer >= chasingTime)) return;
+            
+            timer += Time.deltaTime;
+            UnitAgent.StartMoving(LastVisitor.Transform().position);
         }
 
         public override void OnExit()
         {
             base.OnExit();
-            agent.stoppingDistance = 0;
-            StopMoving();
+            UnitAgent.Agent.stoppingDistance = 0;
+            UnitAgent.StopMoving();
         }
-        private void StartMoving()
-        {
-            agent.isStopped = false;
-            animator.SetFloat("Speed", 1);
-            Debug.Log(VisitorLastPosition);
-            agent.SetDestination(VisitorLastPosition);
-        }
-        
-        private void StopMoving()
-        {
-            agent.isStopped = true;
-            animator.SetFloat("Speed", 0);
-        }
-        
+
         private void CheckFinishPoint()
         {
-            if (agent.pathPending || !(agent.remainingDistance < stoppingDistance)) return;
+            if (!UnitAgent.OnPoint()) return;
+            if (!goToVisitorLastPosition) return;
 
-            StopMoving();
-            onChasingFinish?.Invoke();
+            UnitAgent.StopMoving();
+            OnChasingFinish?.Invoke();
         }
-        
-        
     }
 }

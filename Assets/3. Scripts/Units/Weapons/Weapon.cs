@@ -27,6 +27,7 @@ namespace _3._Scripts.Units.Weapons
 
         public virtual void Attack(IWeaponVisitor visitor)
         {
+            if(visitor == default) return;
             if (CanAttack()) return;
 
             LastAttackTime = Time.time;
@@ -41,7 +42,7 @@ namespace _3._Scripts.Units.Weapons
         protected abstract void Initialize();
         protected abstract void Resetting();
 
-        protected bool CanAttack()
+        public bool CanAttack()
         {
             return Time.time - LastAttackTime < data.AttackCooldown;
         }
