@@ -19,6 +19,7 @@ namespace _3._Scripts.Units.Weapons
         protected float LastAttackTime;
         public event Action OnAttackEnd;
         public string ID => data.ID;
+        public WeaponData Data => data;
 
         private void Start()
         {

@@ -23,7 +23,7 @@ namespace _3._Scripts.Units
 
         public void StopMoving()
         {
-            if(!agent.isStopped)
+            if (!agent.isStopped)
                 OnStopMoving?.Invoke();
             agent.isStopped = true;
             animator.SetFloat("Speed", 0);
@@ -35,5 +35,12 @@ namespace _3._Scripts.Units
         }
 
         public void ResetOnStopMoving() => OnStopMoving = null;
+
+        public Vector3 PointOnNavMesh(Vector3 position, float maxDistance = 5)
+        {
+            return !NavMesh.SamplePosition(position, out var hit, maxDistance, NavMesh.AllAreas)
+                ? position
+                : hit.position;
+        }
     }
 }

@@ -26,12 +26,17 @@ namespace _3._Scripts.Units.Bots
             chaseState.OnChasingFinish += ChaseStateOnChasingFinish;
             searchState.OnSearchEnd += SearchStateOnSearchEnd;
 
+            SetFSMTransition();
+
+            Fsm.StateMachine.SetState(patrolState);
+        }
+
+        private void SetFSMTransition()
+        {
             Fsm.AddTransition(patrolState, new FuncPredicate(() => !visitorDetected && !chasing && !searching));
             Fsm.AddTransition(attackState, new FuncPredicate(() => visitorDetected));
             Fsm.AddTransition(chaseState, new FuncPredicate(() => chasing && !attackState.Attacking));
-            Fsm.AddTransition(chaseState, searchState, new FuncPredicate(() => searching));
-
-            Fsm.StateMachine.SetState(patrolState);
+            Fsm.AddTransition(chaseState, searchState, new FuncPredicate(() => !visitorDetected && searching));
         }
 
         private void SetUnitAgentToStates()
@@ -55,40 +60,23 @@ namespace _3._Scripts.Units.Bots
 
         protected override void OnDetectorFind(IWeaponVisitor visitor)
         {
-            if (Fsm.StateMachine.CurrentState == patrolState)
-            {
-                attackState.LastVisitor = visitor;
-                visitorDetected = visitor != default;
+            SetCurrentVisitor(visitor);
+            SetCurrentVisitorPosition(visitor);
+            
+            if (Fsm.StateMachine.CurrentState == attackState) chasing = true;
+            if (Fsm.StateMachine.CurrentState == searchState) chasing = false;
+        }
 
-                if (visitor != default)
-                    chaseState.LastVisitor = visitor;
-            }
+        private void SetCurrentVisitorPosition(IWeaponVisitor visitor)
+        {
+            if (visitor != default)
+                chaseState.LastVisitor = visitor;
+        }
 
-            if (Fsm.StateMachine.CurrentState == attackState)
-            {
-                attackState.LastVisitor = visitor;
-                visitorDetected = visitor != default;
-                chasing = true;
-
-                if (visitor != default)
-                    chaseState.LastVisitor = visitor;
-            }
-
-            if (Fsm.StateMachine.CurrentState == chaseState)
-            {
-                visitorDetected = visitor != default;
-                attackState.LastVisitor = visitor;
-
-                if (visitor != default)
-                    chaseState.LastVisitor = visitor;
-            }
-
-            if (Fsm.StateMachine.CurrentState == searchState)
-            {
-                chasing = false;
-                visitorDetected = visitor != default;
-                attackState.LastVisitor = visitor;
-            }
+        private void SetCurrentVisitor(IWeaponVisitor visitor)
+        {
+            attackState.LastVisitor = visitor;
+            visitorDetected = visitor != default;
         }
     }
 }

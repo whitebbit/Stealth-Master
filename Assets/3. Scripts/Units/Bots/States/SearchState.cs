@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using _3._Scripts.FSM.Base;
 using UnityEngine;
+using UnityEngine.AI;
 using Random = UnityEngine.Random;
 
 namespace _3._Scripts.Units.Bots.States
@@ -15,7 +16,8 @@ namespace _3._Scripts.Units.Bots.States
         [SerializeField] private float pauseDuration;
         [SerializeField] private float stoppingDistance;
         [Header("Points")] [SerializeField] private int pointsCount;
-        [SerializeField] private float searchRange;
+        [SerializeField] private float minSearchRange;
+        [SerializeField] private float maxSearchRange;
 
         public event Action OnSearchEnd;
         private List<Vector3> points = new();
@@ -73,9 +75,17 @@ namespace _3._Scripts.Units.Bots.States
             points.Clear();
             for (var i = 0; i < pointsCount; i++)
             {
-                points.Add(UnitAgent.Agent.transform.position + new Vector3(Random.Range(-searchRange, searchRange),
-                    Random.Range(-searchRange, searchRange), Random.Range(-searchRange, searchRange)));
+                points.Add(RandomPointOnNavMesh());
             }
         }
+
+        private Vector3 RandomPointOnNavMesh()
+        {
+            var randomDirection = Random.insideUnitSphere * Random.Range(minSearchRange, maxSearchRange);
+            randomDirection += UnitAgent.Agent.transform.position;
+
+            return UnitAgent.PointOnNavMesh(randomDirection, maxSearchRange);
+        }
+        
     }
 }

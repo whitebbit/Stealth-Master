@@ -41,13 +41,13 @@ namespace _3._Scripts.Units.Bots.States
             if (goToVisitorLastPosition) return;
 
             goToVisitorLastPosition = true;
-            UnitAgent.StartMoving(LastVisitor.Transform().position);
+            UnitAgent.StartMoving(UnitAgent.PointOnNavMesh(LastVisitor.Transform().position));
         }
 
         private void ChaseVisitor()
         {
             if ((timer >= chasingTime)) return;
-            
+
             timer += Time.deltaTime;
             UnitAgent.StartMoving(LastVisitor.Transform().position);
         }
