@@ -50,6 +50,7 @@ namespace _3._Scripts.Units.Bots
         {
             markSystem.SetMark(state ? MarkType.Question : MarkType.None);
         }
+        
         private void OnAttack(bool state)
         {
             var color = state ? Color.red : Color.white;
@@ -58,6 +59,15 @@ namespace _3._Scripts.Units.Bots
             color.a = meshRenderer.materials[0].color.a;
             markSystem.SetMark(sprite);
             meshRenderer.material.DOColor(color, 0.25f);
+        }
+
+        public override void HearingNoise(Vector3 soundPosition)
+        {
+            Debug.Log("HearingNoise");
+            var s = simpleBotFsm.GetState<SearchState>();
+            simpleBotFsm.Searching = true;
+            s.GoToSearchPoint = true;
+            s.SearchPoint = soundPosition;
         }
     }
 }

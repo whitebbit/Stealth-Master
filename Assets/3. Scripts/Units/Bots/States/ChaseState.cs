@@ -49,7 +49,9 @@ namespace _3._Scripts.Units.Bots.States
             if ((timer >= chasingTime)) return;
 
             timer += Time.deltaTime;
-            UnitAgent.StartMoving(LastVisitor.Transform().position);
+            
+            if(LastVisitor != default)
+                UnitAgent.StartMoving(LastVisitor.Transform().position);
         }
 
         public override void OnExit()

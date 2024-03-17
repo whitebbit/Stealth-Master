@@ -20,6 +20,9 @@ namespace _3._Scripts.Units.Bots.States
         [SerializeField] private float maxSearchRange;
 
         public event Action OnSearchEnd;
+        public bool GoToSearchPoint { get; set; }
+        public Vector3 SearchPoint { get; set; }
+
         private List<Vector3> points = new();
         private float timer;
 
@@ -31,8 +34,12 @@ namespace _3._Scripts.Units.Bots.States
             UnitAgent.Agent.speed = speed;
             UnitAgent.Agent.stoppingDistance = stoppingDistance;
 
-            InitializePoints();
-            UnitAgent.StartMoving(points[currentPoint]);
+            if (!GoToSearchPoint)
+            {
+                InitializePoints();
+                UnitAgent.StartMoving(points[currentPoint]);
+            }
+            else UnitAgent.StartMoving(UnitAgent.PointOnNavMesh(SearchPoint, maxSearchRange));
         }
 
         public override void Update()
@@ -46,6 +53,7 @@ namespace _3._Scripts.Units.Bots.States
             UnitAgent.Agent.stoppingDistance = 0;
             UnitAgent.StopMoving();
             currentPoint = 0;
+            GoToSearchPoint = false;
             OnSearchEnd?.Invoke();
         }
 
@@ -86,6 +94,5 @@ namespace _3._Scripts.Units.Bots.States
 
             return UnitAgent.PointOnNavMesh(randomDirection, maxSearchRange);
         }
-        
     }
 }

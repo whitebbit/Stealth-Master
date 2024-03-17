@@ -2,9 +2,7 @@ using System;
 using _3._Scripts.FSM.Base;
 using _3._Scripts.Units.Bots.States;
 using _3._Scripts.Units.Interfaces;
-using Unity.VisualScripting;
 using UnityEngine;
-using State = _3._Scripts.FSM.Base.State;
 
 namespace _3._Scripts.Units.Bots
 {
@@ -15,10 +13,10 @@ namespace _3._Scripts.Units.Bots
         [SerializeField] private AttackState attackState;
         [SerializeField] private ChaseState chaseState;
         [SerializeField] private SearchState searchState;
-        
+
         private bool visitorDetected;
         public bool Chasing { get; set; }
-        private bool searching;
+        public bool Searching { get; set; }
 
         public void Initialize(FSMHandler fsm, UnitNavMeshAgent unitNavMeshAgent)
         {
@@ -27,7 +25,7 @@ namespace _3._Scripts.Units.Bots
             SetUnitAgentToStates(unitNavMeshAgent);
             patrolState.StartPosition = unitNavMeshAgent.Agent.transform.position;
         }
-        
+
         public void SetCurrentVisitorPosition(IWeaponVisitor visitor)
         {
             if (visitor != default)
@@ -40,47 +38,47 @@ namespace _3._Scripts.Units.Bots
             visitorDetected = visitor != default;
         }
 
-        public State GetState<T>()
+        public T GetState<T>()
         {
-            if (typeof(T) == typeof(AttackState)) return attackState;
-            if (typeof(T) == typeof(PatrolState)) return patrolState;
-            if (typeof(T) == typeof(ChaseState)) return chaseState;
-            if (typeof(T) == typeof(SearchState)) return searchState;
-
+            if (typeof(T) == typeof(AttackState))return (T)(object)attackState;
+            if (typeof(T) == typeof(PatrolState))return (T)(object)patrolState;
+            if (typeof(T) == typeof(ChaseState))return (T)(object)chaseState;
+            if (typeof(T) == typeof(SearchState))return (T)(object)searchState;
+    
             return default;
         }
-        
+
         private void SetFSMTransition(FSMHandler fsm)
         {
-            fsm.AddTransition(patrolState, new FuncPredicate(() => !visitorDetected && !Chasing && !searching));
+            fsm.AddTransition(patrolState, new FuncPredicate(() => !visitorDetected && !Chasing && !Searching));
             fsm.AddTransition(attackState, new FuncPredicate(() => visitorDetected));
             fsm.AddTransition(chaseState, new FuncPredicate(() => Chasing && !attackState.Attacking));
-            fsm.AddTransition(chaseState, searchState, new FuncPredicate(() => !visitorDetected && searching));
+            fsm.AddTransition(searchState, new FuncPredicate(() => !visitorDetected && Searching));
         }
-        
+
         private void SubscribeToStates()
         {
             chaseState.OnChasingFinish += ChaseStateOnChasingFinish;
             searchState.OnSearchEnd += SearchStateOnSearchEnd;
         }
-        
+
         private void SetUnitAgentToStates(UnitNavMeshAgent unitNavMeshAgent)
         {
             patrolState.UnitAgent = unitNavMeshAgent;
             chaseState.UnitAgent = unitNavMeshAgent;
             searchState.UnitAgent = unitNavMeshAgent;
         }
-        
+
         private void SearchStateOnSearchEnd()
         {
             Chasing = false;
-            searching = false;
+            Searching = false;
         }
 
         private void ChaseStateOnChasingFinish()
         {
             Chasing = false;
-            searching = true;
+            Searching = true;
         }
     }
 }
