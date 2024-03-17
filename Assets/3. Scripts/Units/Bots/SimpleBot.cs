@@ -1,13 +1,9 @@
-using System.Collections;
-using _3._Scripts.FSM.Base;
-using _3._Scripts.Levels;
 using _3._Scripts.Marks;
 using _3._Scripts.Marks.Enums;
 using _3._Scripts.Units.Bots.States;
 using _3._Scripts.Units.Interfaces;
 using DG.Tweening;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace _3._Scripts.Units.Bots
 {

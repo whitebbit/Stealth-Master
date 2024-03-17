@@ -1,59 +1,64 @@
 using UnityEngine;
 
-public abstract class Singleton<T> : Singleton where T : MonoBehaviour
+namespace _3._Scripts.Singleton
 {
-    private static T _instance;
-
-    private static readonly object Lock = new object();
-
-    private bool _persistent = true;
-
-    public static T Instance
+    public abstract class Singleton<T> : Singleton where T : MonoBehaviour
     {
-        get
+        private static T _instance;
+
+        private static readonly object Lock = new();
+
+        private bool _persistent = false;
+
+        public static T Instance
         {
-            if (Quitting)
-                return null;
-
-            lock (Lock)
+            get
             {
-                if (_instance != null)
-                    return _instance;
+                if (Quitting)
+                    return null;
 
-                var instances = FindObjectsOfType<T>();
-                var count = instances.Length;
-                if (count > 0)
+                lock (Lock)
                 {
-                    if (count == 1)
-                        return _instance = instances[0];
-                    for (int i = 1; i < instances.Length; i++)
+                    if (_instance != null)
+                        return _instance;
+
+                    var instances = FindObjectsOfType<T>();
+                    var count = instances.Length;
+                    switch (count)
+                    {
+                        case <= 0:
+                            return _instance = new GameObject().AddComponent<T>();
+                        case 1:
+                            return _instance = instances[0];
+                    }
+
+                    for (var i = 1; i < instances.Length; i++)
                         Destroy(instances[i]);
 
                     return _instance = instances[0];
-                }
 
-                return _instance = new GameObject().AddComponent<T>();
+                }
             }
         }
+
+        private void Awake()
+        {
+            if (_persistent)
+                DontDestroyOnLoad(gameObject);
+
+            OnAwake();
+        }
+
+        protected virtual void OnAwake() { }
     }
 
-    private void Awake()
+    public abstract class Singleton : MonoBehaviour
     {
-        if (_persistent)
-            DontDestroyOnLoad(gameObject);
+        protected static bool Quitting { get; private set; }
 
-        OnAwake();
-    }
-
-    protected virtual void OnAwake() { }
-}
-
-public abstract class Singleton : MonoBehaviour
-{
-    public static bool Quitting { get; private set; }
-
-    private void OnApplicationQuit()
-    {
-        Quitting = true;
+        private void OnApplicationQuit()
+        {
+            Quitting = true;
+        }
     }
 }
