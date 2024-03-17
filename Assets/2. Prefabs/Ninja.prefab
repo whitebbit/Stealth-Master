@@ -17640,6 +17640,76 @@ Transform:
   m_Children: []
   m_Father: {fileID: 714734455516480236}
   m_LocalEulerAnglesHint: {x: 0, y: -0, z: 0}
+--- !u!1 &5390406373515627954
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8552723991807566497}
+  - component: {fileID: 4559373755049649921}
+  - component: {fileID: 8519895114019743931}
+  m_Layer: 3
+  m_Name: Interactor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8552723991807566497
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5390406373515627954}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1295917796115359973}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4559373755049649921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5390406373515627954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc2e5b88f2764264b30657edeab8024d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8519895114019743931
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5390406373515627954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a76ed13b7f8e4263b3a77f0ed4a54c60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  searchLayer:
+    serializedVersion: 2
+    m_Bits: 1024
+  obstacleLayer:
+    serializedVersion: 2
+    m_Bits: 1
+  startPoint: {fileID: 8552723991807566497}
+  offset: {x: 0, y: 0, z: 0}
+  considerObstacles: 0
+  gizmos:
+    type: 1
+    color: {r: 0.14438581, g: 1, b: 0, a: 0.5176471}
+  radius: 1
 --- !u!1 &5427099388844262310
 GameObject:
   m_ObjectHideFlags: 0
@@ -25260,6 +25330,7 @@ Transform:
   m_Children:
   - {fileID: 7404814866834775841}
   - {fileID: 2877631608295810246}
+  - {fileID: 8552723991807566497}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: -0, z: -0}
 --- !u!114 &8584420882497965622

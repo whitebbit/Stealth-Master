@@ -12,15 +12,12 @@ namespace _3._Scripts.Noises
         {
             var layerMask = 1 << layerIndex;
             _overlapResultsCount = Physics.OverlapSphereNonAlloc(position, radius, OverlapResults, layerMask);
-            Debug.Log(_overlapResultsCount);
 
             for (var i = 0; i < _overlapResultsCount; i++)
             {
                 if (OverlapResults[i].TryGetComponent(out INoiseListener listener) == false) continue;
                 listener.HearingNoise(position);
             }
-            
-            Debug.Log("MakeNoise");
         }
     }
 }

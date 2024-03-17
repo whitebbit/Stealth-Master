@@ -37,7 +37,7 @@ namespace _3._Scripts.Units.Weapons
             LastAttackTime = Time.time;
             lastVisitor = visitor;
 
-            aimIK.solver.target = visitor.Transform();
+            aimIK.solver.target = visitor.Target();
             aimIKWeight = 1;
 
             DoAnimation();
@@ -101,7 +101,7 @@ namespace _3._Scripts.Units.Weapons
         {
             var shoulder = unitAnimator.GetBoneTransform(HumanBodyBones.RightShoulder);
             var position = shoulder.position;
-            var direction = lastVisitor.Transform().position - position;
+            var direction = lastVisitor.Target().position - position;
             var spreadFactor = rangeWeaponData.SpreadFactor;
 
             for (var i = 0; i < rangeWeaponData.BulletCount; i++)

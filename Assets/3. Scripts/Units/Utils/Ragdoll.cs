@@ -6,6 +6,7 @@ namespace _3._Scripts.Units.Utils
 {
     public class Ragdoll : MonoBehaviour
     {
+        [SerializeField] private bool changeCollider;
         public event Action<bool> onStateChanged; 
         private bool state;
         
@@ -32,15 +33,7 @@ namespace _3._Scripts.Units.Utils
             InitializeRigidbodies();
             InitializeColliders();
         }
-
-#if UNITY_EDITOR
-
-        private void Update()
-        {
-            //State = state;
-        }
-
-#endif
+        
         private void Start()
         {
             State = false;
@@ -66,7 +59,7 @@ namespace _3._Scripts.Units.Utils
 
         private void CollidersState(bool state)
         {
-            if (mainCollider != null)
+            if (mainCollider != null && changeCollider)
                 mainCollider.enabled = !state;
             
             foreach (var collider in colliders)

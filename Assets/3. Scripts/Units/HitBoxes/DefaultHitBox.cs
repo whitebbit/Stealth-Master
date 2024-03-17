@@ -10,7 +10,7 @@ namespace _3._Scripts.Units.HitBoxes
             unit.ApplyDamage(damage);
         }
 
-        public override Transform Transform()
+        public override Transform Target()
         {
             return aimTarget;
         }

@@ -1,5 +1,6 @@
 using System;
 using _3._Scripts.FSM.Base;
+using _3._Scripts.Levels;
 using _3._Scripts.Units.Bots.States;
 using _3._Scripts.Units.Interfaces;
 using UnityEngine;
@@ -13,6 +14,7 @@ namespace _3._Scripts.Units.Bots
         [SerializeField] private AttackState attackState;
         [SerializeField] private ChaseState chaseState;
         [SerializeField] private SearchState searchState;
+        [SerializeField] private AlarmState alarmState;
 
         private bool visitorDetected;
         public bool Chasing { get; set; }
@@ -40,20 +42,24 @@ namespace _3._Scripts.Units.Bots
 
         public T GetState<T>()
         {
-            if (typeof(T) == typeof(AttackState))return (T)(object)attackState;
-            if (typeof(T) == typeof(PatrolState))return (T)(object)patrolState;
-            if (typeof(T) == typeof(ChaseState))return (T)(object)chaseState;
-            if (typeof(T) == typeof(SearchState))return (T)(object)searchState;
-    
+            if (typeof(T) == typeof(AttackState)) return (T)(object)attackState;
+            if (typeof(T) == typeof(PatrolState)) return (T)(object)patrolState;
+            if (typeof(T) == typeof(ChaseState)) return (T)(object)chaseState;
+            if (typeof(T) == typeof(SearchState)) return (T)(object)searchState;
+            if (typeof(T) == typeof(AlarmState)) return (T)(object)alarmState;
+
             return default;
         }
 
         private void SetFSMTransition(FSMHandler fsm)
         {
-            fsm.AddTransition(patrolState, new FuncPredicate(() => !visitorDetected && !Chasing && !Searching));
+            fsm.AddTransition(patrolState,
+                new FuncPredicate(() => !visitorDetected && !Chasing && !Searching && !Level.Instance.Alarm));
             fsm.AddTransition(attackState, new FuncPredicate(() => visitorDetected));
             fsm.AddTransition(chaseState, new FuncPredicate(() => Chasing && !attackState.Attacking));
-            fsm.AddTransition(searchState, new FuncPredicate(() => !visitorDetected && Searching));
+            fsm.AddTransition(searchState,
+                new FuncPredicate(() => !visitorDetected && Searching && !Level.Instance.Alarm));
+            fsm.AddTransition(alarmState, new FuncPredicate(() => Level.Instance.Alarm));
         }
 
         private void SubscribeToStates()
@@ -67,6 +73,7 @@ namespace _3._Scripts.Units.Bots
             patrolState.UnitAgent = unitNavMeshAgent;
             chaseState.UnitAgent = unitNavMeshAgent;
             searchState.UnitAgent = unitNavMeshAgent;
+            alarmState.UnitAgent = unitNavMeshAgent;
         }
 
         private void SearchStateOnSearchEnd()
@@ -78,7 +85,7 @@ namespace _3._Scripts.Units.Bots
         private void ChaseStateOnChasingFinish()
         {
             Chasing = false;
-            Searching = true;
+            Searching = !Level.Instance.Alarm;
         }
     }
 }

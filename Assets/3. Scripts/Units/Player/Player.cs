@@ -10,6 +10,11 @@ namespace _3._Scripts.Units.Player
         private UnitAnimator unitAnimator;
         private AimIK aimIK;
         private PlayerMovement playerMovement;
+        public override void Dead()
+        {
+            
+        }
+
         protected override void OnAwake()
         {
             var ragdoll = GetComponent<Ragdoll>();

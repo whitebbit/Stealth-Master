@@ -2,6 +2,7 @@ using System;
 using _3._Scripts.Units.Animations;
 using UnityEngine;
 using UnityEngine.AI;
+using Random = UnityEngine.Random;
 
 namespace _3._Scripts.Units
 {
@@ -41,6 +42,13 @@ namespace _3._Scripts.Units
             return !NavMesh.SamplePosition(position, out var hit, maxDistance, NavMesh.AllAreas)
                 ? position
                 : hit.position;
+        }
+        public Vector3 RandomPointOnNavMesh(float min, float max)
+        {
+            var randomDirection = Random.insideUnitSphere * Random.Range(min, max);
+            randomDirection += Agent.transform.position;
+
+            return PointOnNavMesh(randomDirection, max);
         }
     }
 }

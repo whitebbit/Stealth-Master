@@ -36,7 +36,6 @@ namespace _3._Scripts.Detectors.LineOfSightSystem
 
         private void FindVisibleTargets()
         {
-            visibleTargets.Clear();
             CallOnFound(default);
             
             if (!ObjectsDetected()) return;
@@ -44,14 +43,13 @@ namespace _3._Scripts.Detectors.LineOfSightSystem
             for (var i = 0; i < overlapResultsCount; i++)
             {
                 if (overlapResults[i].TryGetComponent(out T findable) == false) continue;
-
+                
                 var target = overlapResults[i].transform;
                 var dirToTarget = (target.position - transform.position).normalized;
                 if (!(Vector3.Angle(transform.forward, dirToTarget) < viewAngle / 2)) continue;
                 var dstToTarget = Vector3.Distance(transform.position, target.position);
                 if (Physics.Raycast(transform.position, dirToTarget, dstToTarget, obstacleMask)) continue;
                 
-                visibleTargets.Add(findable);
                 CallOnFound(findable);
             }
         }

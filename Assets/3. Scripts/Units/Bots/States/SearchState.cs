@@ -39,7 +39,11 @@ namespace _3._Scripts.Units.Bots.States
                 InitializePoints();
                 UnitAgent.StartMoving(points[currentPoint]);
             }
-            else UnitAgent.StartMoving(UnitAgent.PointOnNavMesh(SearchPoint, maxSearchRange));
+            else
+            {
+                points.Add(UnitAgent.PointOnNavMesh(SearchPoint, maxSearchRange));
+                UnitAgent.StartMoving(points[currentPoint]);
+            }
         }
 
         public override void Update()
@@ -83,16 +87,10 @@ namespace _3._Scripts.Units.Bots.States
             points.Clear();
             for (var i = 0; i < pointsCount; i++)
             {
-                points.Add(RandomPointOnNavMesh());
+                points.Add(UnitAgent.RandomPointOnNavMesh(minSearchRange, maxSearchRange));
             }
         }
 
-        private Vector3 RandomPointOnNavMesh()
-        {
-            var randomDirection = Random.insideUnitSphere * Random.Range(minSearchRange, maxSearchRange);
-            randomDirection += UnitAgent.Agent.transform.position;
-
-            return UnitAgent.PointOnNavMesh(randomDirection, maxSearchRange);
-        }
+        
     }
 }

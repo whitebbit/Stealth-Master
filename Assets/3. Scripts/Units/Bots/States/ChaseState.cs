@@ -41,7 +41,7 @@ namespace _3._Scripts.Units.Bots.States
             if (goToVisitorLastPosition) return;
 
             goToVisitorLastPosition = true;
-            UnitAgent.StartMoving(UnitAgent.PointOnNavMesh(LastVisitor.Transform().position));
+            UnitAgent.StartMoving(UnitAgent.PointOnNavMesh(LastVisitor.Target().position));
         }
 
         private void ChaseVisitor()
@@ -51,7 +51,7 @@ namespace _3._Scripts.Units.Bots.States
             timer += Time.deltaTime;
             
             if(LastVisitor != default)
-                UnitAgent.StartMoving(LastVisitor.Transform().position);
+                UnitAgent.StartMoving(LastVisitor.Target().position);
         }
 
         public override void OnExit()

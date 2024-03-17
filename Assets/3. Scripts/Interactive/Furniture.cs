@@ -3,10 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using _3._Scripts.Interactive.Interfaces;
 using UnityEngine;
+using UnityEngine.AI;
 using Random = UnityEngine.Random;
 
 namespace _3._Scripts.Interactive
 {
+    [RequireComponent(typeof(Rigidbody))]
+    [RequireComponent(typeof(NavMeshObstacle))]
     public class Furniture : MonoBehaviour, IInteractive
     {
         [SerializeField] private float brokenForce = 125;
@@ -22,8 +25,10 @@ namespace _3._Scripts.Interactive
             coll = GetComponent<Collider>();
             foreach (Transform b in broken)
             {
-                brokenColliders.Add(b.GetComponent<Collider>());
-                brokenRigidbodies.Add(b.GetComponent<Rigidbody>());
+                if(b.TryGetComponent(out Collider c))
+                    brokenColliders.Add(c);
+                if(b.TryGetComponent(out Rigidbody rb))
+                    brokenRigidbodies.Add(rb);
             }
         }
 
@@ -34,7 +39,7 @@ namespace _3._Scripts.Interactive
 
             coll.enabled = false;
 
-            foreach (var b in brokenColliders)
+            foreach (Transform b in broken)
             {
                 b.gameObject.layer = LayerMask.NameToLayer("Ignore");
             }

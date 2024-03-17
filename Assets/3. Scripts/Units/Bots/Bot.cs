@@ -1,6 +1,8 @@
 using System;
+using System.Collections;
 using _3._Scripts.Detectors;
 using _3._Scripts.FSM.Base;
+using _3._Scripts.Levels;
 using _3._Scripts.Noises;
 using _3._Scripts.Noises.Interfaces;
 using _3._Scripts.Units.Animations;
@@ -28,8 +30,11 @@ namespace _3._Scripts.Units.Bots
 
         public override void Dead()
         {
-            NoiseEmitter.MakeNoise(transform.position, gameObject.layer, 20);
+            NoiseEmitter.MakeNoise(transform.position, gameObject.layer, 5);
+            gameObject.layer = LayerMask.NameToLayer("PlayerIgnore");
+            detector.gameObject.SetActive(false);
             ragdoll.State = true;
+            OnDead();
         }
 
         protected override void OnAwake()
@@ -41,12 +46,18 @@ namespace _3._Scripts.Units.Bots
         {
             ragdoll.onStateChanged += ChangeStateByRagdoll;
             detector.OnFound += OnDetectorFind;
+            Level.Instance.AddBot(this);
             InitializeFSM();
         }
 
         protected abstract void InitializeFSM();
 
         protected abstract void OnDetectorFind(IWeaponVisitor visitor);
+
+
+        protected virtual void OnDead()
+        {
+        }
 
         private void InitializeComponents()
         {
@@ -58,7 +69,7 @@ namespace _3._Scripts.Units.Bots
 
         private void Update()
         {
-            if(Health.Health > 0)
+            if (Health.Health > 0)
                 Fsm.StateMachine.Update();
         }
 
@@ -71,6 +82,22 @@ namespace _3._Scripts.Units.Bots
 
         public virtual void HearingNoise(Vector3 soundPosition)
         {
+        }
+
+        private static bool CheckDeadBot(Bot bot)
+        {
+            return bot.Health.Health <= 0 && Level.Instance.ContainsBot(bot);
+        }
+        
+        protected IEnumerator EnableAlarm(Bot bot, float delay = 1, Action action = null)
+        {
+            if (!CheckDeadBot(bot)) yield break;
+
+            action?.Invoke();
+            Level.Instance.RemoveBot(bot);
+            
+            yield return new WaitForSeconds(delay);
+            Level.Instance.Alarm = true;
         }
     }
 }

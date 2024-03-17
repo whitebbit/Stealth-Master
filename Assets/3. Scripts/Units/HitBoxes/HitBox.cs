@@ -7,6 +7,10 @@ namespace _3._Scripts.Units.HitBoxes
     {
         [SerializeField] protected Unit unit;
         public abstract void Visit(float damage);
-        public abstract Transform Transform();
+        public abstract Transform Target();
+        public GameObject Object()
+        {
+            return gameObject;
+        }
     }
 }
