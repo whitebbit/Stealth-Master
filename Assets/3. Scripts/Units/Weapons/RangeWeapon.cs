@@ -1,12 +1,8 @@
-using System;
 using System.Collections;
-using _3._Scripts.Units.Animations;
-using _3._Scripts.Units.Animations.IK;
 using _3._Scripts.Units.Interfaces;
 using _3._Scripts.Units.Weapons.Scriptable;
 using RootMotion.FinalIK;
 using UnityEngine;
-using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 namespace _3._Scripts.Units.Weapons
@@ -15,6 +11,7 @@ namespace _3._Scripts.Units.Weapons
     {
         [SerializeField] protected AimIK aimIK;
         [SerializeField] protected HumanBodyBones shootBones = HumanBodyBones.RightShoulder;
+
         [Header("Range Weapon")] [SerializeField]
         private RangeWeaponData rangeWeaponData;
 
@@ -23,6 +20,7 @@ namespace _3._Scripts.Units.Weapons
         private float aimIKWeight;
 
         private IWeaponVisitor lastVisitor;
+        private bool attacking;
 
         private void Update()
         {
@@ -32,14 +30,14 @@ namespace _3._Scripts.Units.Weapons
         public override void Attack(IWeaponVisitor visitor)
         {
             if (visitor == default) return;
-            if (CanAttack()) return;
+            if (attacking) return;
+            if (!CanAttack()) return;
 
             LastAttackTime = Time.time;
             lastVisitor = visitor;
 
             aimIK.solver.target = visitor.Target();
             aimIKWeight = 1;
-
             DoAnimation();
         }
 
@@ -64,6 +62,7 @@ namespace _3._Scripts.Units.Weapons
         protected override void DoAnimation()
         {
             unitAnimator.SetTrigger("Attack");
+            unitAnimator.SetBool("Attacking", true);
         }
 
         protected override void CreateParticle()
@@ -79,15 +78,13 @@ namespace _3._Scripts.Units.Weapons
 
         protected void OnAnimationEvent(string key)
         {
+            if (attacking) return;
             switch (key)
             {
                 case "RangeAttack":
+                    attacking = true;
                     PerformAttack();
                     PlaySound();
-                    break;
-                case "AnimationEnd":
-                    CallOnAttackEnd();
-                    aimIKWeight = 0;
                     break;
             }
         }
@@ -101,13 +98,13 @@ namespace _3._Scripts.Units.Weapons
         {
             var bones = unitAnimator.GetBoneTransform(shootBones);
             var position = bones.position;
-            var direction = lastVisitor.Target().position - position;
             var spreadFactor = rangeWeaponData.SpreadFactor;
 
             for (var i = 0; i < rangeWeaponData.BulletCount; i++)
             {
                 var spread = new Vector3(Random.Range(-spreadFactor, spreadFactor),
                     Random.Range(-spreadFactor, spreadFactor), Random.Range(-spreadFactor, spreadFactor));
+                var direction = lastVisitor.Target().position - position;
                 var b = Instantiate(rangeWeaponData.Bullet, position, Quaternion.LookRotation(direction + spread));
 
                 CreateParticle();
@@ -116,6 +113,15 @@ namespace _3._Scripts.Units.Weapons
                 b.AddForce(direction + spread, rangeWeaponData.Force);
                 yield return new WaitForSeconds(rangeWeaponData.AttackSpeed);
             }
+
+            unitAnimator.SetBool("Attacking", false);
+            
+            yield return new WaitForSeconds(rangeWeaponData.AttackSpeed);
+            aimIKWeight = 0;
+
+            yield return new WaitForSeconds(data.AttackCooldown - (Time.time - LastAttackTime));
+            attacking = false;
+            CallOnAttackEnd();
         }
     }
 }

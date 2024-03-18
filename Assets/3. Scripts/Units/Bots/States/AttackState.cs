@@ -38,7 +38,7 @@ namespace _3._Scripts.Units.Bots.States
         {
             if (!Attacking) return;
             attackCooldownTimer += Time.deltaTime;
-            if (!(attackCooldownTimer >= weapon.Data.AttackCooldown * 0.5f)) return;
+            if (!(attackCooldownTimer >= weapon.Data.AttackCooldown * 0.75f)) return;
 
             attackCooldownTimer = 0;
             Attacking = false;

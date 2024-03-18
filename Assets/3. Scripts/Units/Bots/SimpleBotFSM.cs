@@ -59,7 +59,7 @@ namespace _3._Scripts.Units.Bots
             fsm.AddTransition(chaseState, new FuncPredicate(() => Chasing && !attackState.Attacking));
             fsm.AddTransition(searchState,
                 new FuncPredicate(() => !visitorDetected && Searching && !Level.Instance.Alarm));
-            fsm.AddTransition(alarmState, new FuncPredicate(() => Level.Instance.Alarm));
+            fsm.AddTransition(alarmState, new FuncPredicate(() => Level.Instance.Alarm && !attackState.Attacking));
         }
 
         private void SubscribeToStates()

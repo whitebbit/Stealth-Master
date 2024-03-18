@@ -45,7 +45,7 @@ namespace _3._Scripts.Units.Weapons
 
         public bool CanAttack()
         {
-            return Time.time - LastAttackTime < data.AttackCooldown;
+            return Time.time - LastAttackTime >= data.AttackCooldown;
         }
 
         protected virtual void PerformAttack()
