@@ -12,14 +12,14 @@ namespace _3._Scripts.Heroes.Scriptable
         [Header("Perks")] 
         [SerializeField] private PerkData firstPerk;
         [SerializeField] private PerkData secondPerk;
-        [Header("UI")] [SerializeField] private SerializableDictionary<string, string> name;
+        [Header("UI")] [SerializeField] private NameYG name;
         [Space] [SerializeField] private Sprite miniIcon;
         [SerializeField] private Sprite bigIcon;
 
         public string ID => id;
         public int StartHealth => startHealth;
         
-        public string Name => name[YandexGame.lang];
+        public string Name => name.Name;
         public Sprite MiniIcon => miniIcon;
         public Sprite BigIcon => bigIcon;
 

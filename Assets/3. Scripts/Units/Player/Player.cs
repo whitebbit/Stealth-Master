@@ -1,7 +1,10 @@
+using System;
 using _3._Scripts.Units.Animations;
 using _3._Scripts.Units.Health;
 using _3._Scripts.Units.Utils;
+using DG.Tweening;
 using RootMotion.FinalIK;
+using UnityEngine;
 
 namespace _3._Scripts.Units.Player
 {
@@ -15,6 +18,24 @@ namespace _3._Scripts.Units.Player
             
         }
 
+        public Tween GoToFinishPoint(Transform point, float duration,Action onComplete = null)
+        {
+            playerMovement.enabled = false;
+            var position = point.position;
+            transform.DOLookAt(position, 0.25f, AxisConstraint.Y);
+            var t = transform.DOMove(position, duration).OnComplete(() =>
+            {
+                unitAnimator.SetFloat("Speed", 0);
+                onComplete?.Invoke();
+            }).OnStart(() =>
+            {
+                unitAnimator.SetFloat("Speed", 1f);
+            })
+            .SetEase(Ease.Linear);
+
+            return t;
+        }
+        
         protected override void OnAwake()
         {
             var ragdoll = GetComponent<Ragdoll>();
@@ -23,7 +44,7 @@ namespace _3._Scripts.Units.Player
             playerMovement = GetComponent<PlayerMovement>();
             ragdoll.OnStateChanged += ChangeStateByRagdoll;
         }
-
+        
         private void ChangeStateByRagdoll(bool state)
         {
             unitAnimator.SetState(!state);

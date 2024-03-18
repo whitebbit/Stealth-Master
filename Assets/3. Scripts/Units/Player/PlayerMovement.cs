@@ -42,6 +42,7 @@ namespace _3._Scripts.Units.Player
 
         private void OnDisable()
         {
+            Stop();
             movable.Moved -= Move;
             movable.Stopped -= Stop;
         }
