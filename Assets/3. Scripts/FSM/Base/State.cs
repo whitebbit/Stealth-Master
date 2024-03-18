@@ -10,7 +10,7 @@ namespace _3._Scripts.FSM.Base
         public event Action OnExitAction; 
         public virtual void OnEnter()
         {
-            Debug.Log($"{GetType()} - OnEnter");
+            //Debug.Log($"{GetType()} - OnEnter");
             OnEnterAction?.Invoke();
         }
 
@@ -26,7 +26,7 @@ namespace _3._Scripts.FSM.Base
 
         public virtual void OnExit()
         {
-            Debug.Log($"{GetType()} - OnExit");
+            //Debug.Log($"{GetType()} - OnExit");
             OnExitAction?.Invoke();
         }
     }

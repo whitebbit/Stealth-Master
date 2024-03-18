@@ -7,7 +7,8 @@ namespace _3._Scripts.Units.Utils
     public class Ragdoll : MonoBehaviour
     {
         [SerializeField] private bool changeCollider;
-        public event Action<bool> onStateChanged; 
+        [SerializeField] private bool changeRigidbody;
+        public event Action<bool> OnStateChanged; 
         private bool state;
         
         private List<Rigidbody> rigidbodies = new();
@@ -24,10 +25,19 @@ namespace _3._Scripts.Units.Utils
                 CollidersState(state);
                 RigidbodiesState(state);
                 
-                onStateChanged?.Invoke(state);
+                OnStateChanged?.Invoke(state);
             }
         }
 
+        public void AddForce(int rigidbodyIndex, Vector3 direction, float force)
+        {
+            rigidbodies[rigidbodyIndex].AddForce(direction * force, ForceMode.Force);
+        }
+        public void AddMainForce(Vector3 direction, float force)
+        {
+            if(mainRigidbody == null) return;
+            mainRigidbody.AddForce(direction * force, ForceMode.Force);
+        }
         private void Awake()
         {
             InitializeRigidbodies();
@@ -70,7 +80,7 @@ namespace _3._Scripts.Units.Utils
 
         private void RigidbodiesState(bool state)
         {
-            if (mainRigidbody != null)
+            if (mainRigidbody != null && changeRigidbody)
                 mainRigidbody.isKinematic = state;
             
             foreach (var rigidbody in rigidbodies)

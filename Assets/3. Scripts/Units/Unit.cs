@@ -11,7 +11,7 @@ namespace _3._Scripts.Units
         [Header("Unit Settings")]
         [SerializeField] private int maxHealth = 100;
         public UnitHealth Health { get; private set; }
-
+        public Transform LastDamageDealer { get; set; }
         private void Awake()
         {
             Health = new UnitHealth(maxHealth);

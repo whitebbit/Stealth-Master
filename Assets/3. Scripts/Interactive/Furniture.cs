@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using _3._Scripts.Interactive.Interfaces;
+using _3._Scripts.Units.Player;
 using UnityEngine;
 using UnityEngine.AI;
 using Random = UnityEngine.Random;
@@ -31,7 +32,7 @@ namespace _3._Scripts.Interactive
                     brokenRigidbodies.Add(rb);
             }
         }
-
+        
         public void Interact()
         {
             clear.gameObject.SetActive(false);

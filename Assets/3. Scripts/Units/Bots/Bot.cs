@@ -30,10 +30,18 @@ namespace _3._Scripts.Units.Bots
 
         public override void Dead()
         {
-            NoiseEmitter.MakeNoise(transform.position, gameObject.layer, 5);
+            var position = transform.position;
+            var position1 = LastDamageDealer.position;
+
+            NoiseEmitter.MakeNoise(position, gameObject.layer);
             gameObject.layer = LayerMask.NameToLayer("PlayerIgnore");
             detector.gameObject.SetActive(false);
+
             ragdoll.State = true;
+            ragdoll.AddForce(0, (position - position1).normalized + Vector3.up * 1.25f
+                , 5000);
+
+
             OnDead();
         }
 
@@ -44,7 +52,7 @@ namespace _3._Scripts.Units.Bots
 
         protected override void OnStart()
         {
-            ragdoll.onStateChanged += ChangeStateByRagdoll;
+            ragdoll.OnStateChanged += ChangeStateByRagdoll;
             detector.OnFound += OnDetectorFind;
             Level.Instance.AddBot(this);
             InitializeFSM();
@@ -88,15 +96,16 @@ namespace _3._Scripts.Units.Bots
         {
             return bot.Health.Health <= 0 && Level.Instance.ContainsBot(bot);
         }
-        
+
         protected IEnumerator EnableAlarm(Bot bot, float delay = 1, Action action = null)
         {
             if (!CheckDeadBot(bot)) yield break;
 
             action?.Invoke();
             Level.Instance.RemoveBot(bot);
-            
+
             yield return new WaitForSeconds(delay);
+            if (Health.Health <= 0) yield break;
             Level.Instance.Alarm = true;
         }
     }

@@ -66,7 +66,7 @@ namespace _3._Scripts.Units.Weapons
 
         protected virtual void DoDamage(IWeaponVisitor visitor)
         {
-            visitor.Visit(data.Damage);
+            visitor.Visit(data.Damage, transform);
         }
 
         protected virtual void CallOnAttackEnd()

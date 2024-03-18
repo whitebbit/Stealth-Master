@@ -8,20 +8,13 @@ namespace _3._Scripts.Levels
         [SerializeField] private ParticleSystem particle;
 
 
-        private void OnEnable()
+        private void Start()
         {
             Level.Instance.OnAlarm += LightState;
         }
         
-        
-        private void OnDisable()
-        {
-            Level.Instance.OnAlarm -= LightState;
-        }
-        
         private void LightState(bool state)
         {
-            Debug.Log(state);
             particle.gameObject.SetActive(state);
             if (state) particle.Play();
             else particle.Stop();

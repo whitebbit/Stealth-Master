@@ -122,7 +122,7 @@ MonoBehaviour:
     m_Bits: 64
   obstacleLayer:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 3073
   startPoint: {fileID: 1295917796115359973}
   offset: {x: 0, y: 0, z: 2.5}
   considerObstacles: 1
@@ -280,7 +280,7 @@ MonoBehaviour:
     m_Bits: 64
   obstacleLayer:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 3073
   startPoint: {fileID: 1295917796115359973}
   offset: {x: 0, y: 1, z: 0.75}
   considerObstacles: 1
@@ -581,6 +581,82 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4516987804021083369}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1524869606475781699
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2749550004601116129}
+  - component: {fileID: 756011326576582153}
+  - component: {fileID: 2513310876502886413}
+  m_Layer: 3
+  m_Name: MoneyMagnet
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2749550004601116129
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1524869606475781699}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1295917796115359973}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &756011326576582153
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1524869606475781699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63d46db80d7fa644a97152c23d936969, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attractDuration: 1
+  followOffsetDistance: 1
+  speed: 5
+  scaleReduceDuration: 0.5
+  scaleReduceMoveSpeed: 5
+  takeShakeDuration: 0.2
+--- !u!114 &2513310876502886413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1524869606475781699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a76ed13b7f8e4263b3a77f0ed4a54c60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  searchLayer:
+    serializedVersion: 2
+    m_Bits: 1024
+  obstacleLayer:
+    serializedVersion: 2
+    m_Bits: 2121
+  startPoint: {fileID: 2749550004601116129}
+  offset: {x: 0, y: 0, z: 0}
+  considerObstacles: 0
+  gizmos:
+    type: 1
+    color: {r: 1, g: 0, b: 0.7898936, a: 0.5019608}
+  radius: 3
 --- !u!1 &2048786204455198121
 GameObject:
   m_ObjectHideFlags: 0
@@ -15103,8 +15179,8 @@ MonoBehaviour:
     m_Bits: 64
   obstacleLayer:
     serializedVersion: 2
-    m_Bits: 1
-  startPoint: {fileID: 0}
+    m_Bits: 3073
+  startPoint: {fileID: 1295917796115359973}
   offset: {x: 0, y: 0, z: 2.5}
   considerObstacles: 1
   gizmos:
@@ -22493,7 +22569,7 @@ MonoBehaviour:
     m_Bits: 64
   obstacleLayer:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 3073
   startPoint: {fileID: 1295917796115359973}
   offset: {x: 0, y: 0, z: 1.25}
   considerObstacles: 1
@@ -25304,6 +25380,7 @@ GameObject:
   - component: {fileID: 199138654172820944}
   - component: {fileID: 4945374630660180794}
   - component: {fileID: 4952987705215130337}
+  - component: {fileID: 1897132497709179817}
   - component: {fileID: 2508652398604073515}
   - component: {fileID: 848619960745761360}
   - component: {fileID: 5555661386666533745}
@@ -25330,6 +25407,7 @@ Transform:
   m_Children:
   - {fileID: 7404814866834775841}
   - {fileID: 2877631608295810246}
+  - {fileID: 2749550004601116129}
   - {fileID: 8552723991807566497}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: -0, z: -0}
@@ -25413,6 +25491,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 934f1d6e748a4bc480ca4f928d425411, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  changeCollider: 0
+  changeRigidbody: 0
 --- !u!114 &4952987705215130337
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25427,6 +25507,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unit: {fileID: 8584420882497965622}
   aimTarget: {fileID: 2877631608295810246}
+--- !u!114 &1897132497709179817
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6874717132683085949}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc2e5b88f2764264b30657edeab8024d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!95 &2508652398604073515
 Animator:
   serializedVersion: 5

@@ -21,7 +21,7 @@ namespace _3._Scripts.Units.Player
             unitAnimator = GetComponent<UnitAnimator>();
             aimIK = GetComponent<AimIK>();
             playerMovement = GetComponent<PlayerMovement>();
-            ragdoll.onStateChanged += ChangeStateByRagdoll;
+            ragdoll.OnStateChanged += ChangeStateByRagdoll;
         }
 
         private void ChangeStateByRagdoll(bool state)

@@ -14,7 +14,7 @@ namespace _3._Scripts.Units.Weapons
     public class RangeWeapon : Weapon
     {
         [SerializeField] protected AimIK aimIK;
-
+        [SerializeField] protected HumanBodyBones shootBones = HumanBodyBones.RightShoulder;
         [Header("Range Weapon")] [SerializeField]
         private RangeWeaponData rangeWeaponData;
 
@@ -99,8 +99,8 @@ namespace _3._Scripts.Units.Weapons
 
         private IEnumerator DelayedPerformAttack()
         {
-            var shoulder = unitAnimator.GetBoneTransform(HumanBodyBones.RightShoulder);
-            var position = shoulder.position;
+            var bones = unitAnimator.GetBoneTransform(shootBones);
+            var position = bones.position;
             var direction = lastVisitor.Target().position - position;
             var spreadFactor = rangeWeaponData.SpreadFactor;
 

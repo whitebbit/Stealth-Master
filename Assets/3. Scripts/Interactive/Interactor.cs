@@ -7,26 +7,10 @@ namespace _3._Scripts.Interactive
 {
     public class Interactor: MonoBehaviour
     {
-        private BaseDetector<IInteractive> detector;
-
-        private void Awake()
+        private void OnCollisionEnter(Collision other)
         {
-            detector = GetComponent<BaseDetector<IInteractive>>();
-        }
-
-        private void OnEnable()
-        {
-            detector.OnFound += DetectorOnFound;
-        }
-
-        private void DetectorOnFound(IInteractive obj)
-        {
-            obj.Interact();
-        }
-
-        private void OnDisable()
-        {
-            detector.OnFound -= DetectorOnFound;
+            if(other.gameObject.TryGetComponent(out IInteractive interactive))
+                interactive.Interact();
         }
     }
 }
