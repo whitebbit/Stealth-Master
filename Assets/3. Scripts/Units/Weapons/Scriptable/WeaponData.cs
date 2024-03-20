@@ -13,14 +13,14 @@ namespace _3._Scripts.Units.Weapons.Scriptable
         [Header("Animation")]
         [SerializeField] private AnimatorOverrideController animatorController;
 
-        [Header("UI")] [SerializeField] private SerializableDictionary<string, string> name;
+        [Header("UI")] [SerializeField] private NameYG name;
         [SerializeField] private Sprite icon;
         public string ID => id;
         public float AttackCooldown => attackCooldown;
         public float Damage => damage;
         public AnimatorOverrideController AnimatorController => animatorController;
 
-        public string Name => name[YandexGame.lang];
+        public string Name => name.Name;
 
         public Sprite Icon => icon;
     }

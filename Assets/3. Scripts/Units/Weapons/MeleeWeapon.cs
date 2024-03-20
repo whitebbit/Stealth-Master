@@ -1,4 +1,5 @@
 using System;
+using _3._Scripts.Detectors;
 using _3._Scripts.Units.Animations;
 using _3._Scripts.Units.Interfaces;
 using UnityEngine;
@@ -8,6 +9,7 @@ namespace _3._Scripts.Units.Weapons
 {
     public class MeleeWeapon : Weapon
     {      
+        [SerializeField] protected BaseDetector<IWeaponVisitor> detector;
         private IWeaponVisitor lastVisitor;
         
         public override void Attack(IWeaponVisitor visitor)
@@ -21,14 +23,14 @@ namespace _3._Scripts.Units.Weapons
 
         protected override void Initialize()
         {
-            Detector.OnFound += Attack;
+            detector.OnFound += Attack;
             unitAnimator.AnimationEvent += OnAnimationEvent;
             unitAnimator.SetController(data.AnimatorController);
         }
 
         protected override void Resetting()
         {
-            Detector.OnFound -= Attack;
+            detector.OnFound -= Attack;
             unitAnimator.AnimationEvent -= OnAnimationEvent;
         }
 

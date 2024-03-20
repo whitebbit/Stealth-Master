@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51e370a5427a4c99954b36b02ccd4459, type: 3}
+  m_Name: Location
+  m_EditorClassIdentifier: 
+  name:
+    name:
+      m_keys:
+      - ru
+      - en
+      m_values:
+      - "\u041D\u043E\u0447\u043D\u043E\u0439 \u0433\u043E\u0440\u043E\u0434"
+      - Night City
+  icon: {fileID: 21300000, guid: d1ce84e104576a04793bedd6091cec11, type: 3}
+  contracts:
+  - {fileID: 11400000, guid: efa83ced00a30084faf4925aeffe0001, type: 2}

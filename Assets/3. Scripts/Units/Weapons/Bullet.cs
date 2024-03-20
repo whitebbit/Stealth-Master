@@ -23,7 +23,7 @@ namespace _3._Scripts.Units.Weapons
         {
             if (other.gameObject.TryGetComponent(out IWeaponVisitor visitor))
             {
-                visitor.Visit(damage);
+                visitor.Visit(damage, transform);
                 Destroy(gameObject);
             }
             else

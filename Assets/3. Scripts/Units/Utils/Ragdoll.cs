@@ -6,8 +6,10 @@ namespace _3._Scripts.Units.Utils
 {
     public class Ragdoll : MonoBehaviour
     {
-        public event Action<bool> onStateChanged; 
-        [SerializeField] private bool state;
+        [SerializeField] private bool changeCollider;
+        [SerializeField] private bool changeRigidbody;
+        public event Action<bool> OnStateChanged; 
+        private bool state;
         
         private List<Rigidbody> rigidbodies = new();
         private List<Collider> colliders = new();
@@ -23,24 +25,25 @@ namespace _3._Scripts.Units.Utils
                 CollidersState(state);
                 RigidbodiesState(state);
                 
-                onStateChanged?.Invoke(state);
+                OnStateChanged?.Invoke(state);
             }
         }
 
+        public void AddForce(int rigidbodyIndex, Vector3 direction, float force)
+        {
+            rigidbodies[rigidbodyIndex].AddForce(direction * force, ForceMode.Force);
+        }
+        public void AddMainForce(Vector3 direction, float force)
+        {
+            if(mainRigidbody == null) return;
+            mainRigidbody.AddForce(direction * force, ForceMode.Force);
+        }
         private void Awake()
         {
             InitializeRigidbodies();
             InitializeColliders();
         }
-
-#if UNITY_EDITOR
-
-        private void Update()
-        {
-            State = state;
-        }
-
-#endif
+        
         private void Start()
         {
             State = false;
@@ -66,7 +69,7 @@ namespace _3._Scripts.Units.Utils
 
         private void CollidersState(bool state)
         {
-            if (mainCollider != null)
+            if (mainCollider != null && changeCollider)
                 mainCollider.enabled = !state;
             
             foreach (var collider in colliders)
@@ -77,7 +80,7 @@ namespace _3._Scripts.Units.Utils
 
         private void RigidbodiesState(bool state)
         {
-            if (mainRigidbody != null)
+            if (mainRigidbody != null && changeRigidbody)
                 mainRigidbody.isKinematic = state;
             
             foreach (var rigidbody in rigidbodies)

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace _3._Scripts.Units.Weapons.Scriptable
 {
@@ -8,6 +9,8 @@ namespace _3._Scripts.Units.Weapons.Scriptable
         [SerializeField] private int bulletCount;
         [SerializeField] private float spreadFactor;
         [SerializeField] private float attackSpeed;
+        [SerializeField] private float force;
+
         [Space] [SerializeField] private Bullet bullet;
 
         public int BulletCount => bulletCount;
@@ -17,5 +20,7 @@ namespace _3._Scripts.Units.Weapons.Scriptable
         public float AttackSpeed => attackSpeed;
 
         public Bullet Bullet => bullet;
+
+        public float Force => force;
     }
 }

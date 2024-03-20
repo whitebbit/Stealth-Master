@@ -26,7 +26,13 @@ namespace _3._Scripts.Units.Animations
             animator.SetTrigger(key);
         }
 
+        public void SetBool(string key, bool state)
+        {
+            if (animator == null) return;
 
+            animator.SetBool(key, state);
+        }
+        
         public void SetFloat(string key, float value)
         {
             if (animator == null) return;

@@ -14,13 +14,13 @@ namespace _3._Scripts.Units.Player
 
 
         public float SpeedMultiplier { get; set; }
-        private Rigidbody rb;
         private IMovable movable;
         private UnitAnimator animator;
+        private Rigidbody rb;
         private void Awake()
         {
-            rb = GetComponent<Rigidbody>();
             animator = GetComponent<UnitAnimator>();
+            rb = GetComponent<Rigidbody>();
             movable = new InputMovable(new JoystickInput(joystick));
         }
 
@@ -42,6 +42,7 @@ namespace _3._Scripts.Units.Player
 
         private void OnDisable()
         {
+            Stop();
             movable.Moved -= Move;
             movable.Stopped -= Stop;
         }
@@ -50,9 +51,11 @@ namespace _3._Scripts.Units.Player
         {
             var lookRotation = Quaternion.LookRotation(direction);
             var speed = config.MoveSpeed * (1 + SpeedMultiplier / 100);
-            rb.transform.rotation =
-                Quaternion.Lerp(transform.rotation, lookRotation, Time.deltaTime * config.RotationSpeed);
-            rb.MovePosition(rb.position + transform.forward * direction.magnitude * speed * Time.deltaTime);
+            var t = rb.transform;
+
+            t.rotation =
+                Quaternion.Lerp(t.rotation, lookRotation, Time.deltaTime * config.RotationSpeed);
+            rb.velocity = t.forward * direction.magnitude * speed;
             animator.SetFloat("Speed", direction.magnitude);
         }
 
@@ -60,7 +63,6 @@ namespace _3._Scripts.Units.Player
         {
             if (rb != null)
                 rb.velocity = Vector3.zero;
-            
             animator.SetFloat("Speed", 0);
         }
     }

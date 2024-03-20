@@ -1,37 +1,38 @@
+using System;
 using _3._Scripts.Detectors;
 using _3._Scripts.Units.Animations;
 using _3._Scripts.Units.Interfaces;
 using _3._Scripts.Units.Weapons.Interfaces;
 using _3._Scripts.Units.Weapons.Scriptable;
 using UnityEngine;
+using UnityEngine.Serialization;
+
 namespace _3._Scripts.Units.Weapons
 {
-    public abstract class Weapon: MonoBehaviour, IWeapon
+    public abstract class Weapon : MonoBehaviour, IWeapon
     {
         [SerializeField] protected WeaponData data;
-        [Header("Components")]
-        [SerializeField] protected  UnitAnimator unitAnimator;
-        
-        protected BaseDetector<IWeaponVisitor> Detector;
+
+        [Header("Components")] [SerializeField]
+        protected UnitAnimator unitAnimator;
+
         protected float LastAttackTime;
-
+        public event Action OnAttackEnd;
         public string ID => data.ID;
+        public WeaponData Data => data;
 
-        private void Awake()
-        {
-            Detector = GetComponent<BaseDetector<IWeaponVisitor>>();
-        }
         private void Start()
         {
             Initialize();
         }
-        
+
         public virtual void Attack(IWeaponVisitor visitor)
         {
+            if(visitor == default) return;
             if (CanAttack()) return;
-            
+
             LastAttackTime = Time.time;
-            
+
             PerformAttack();
             DoAnimation();
             PlaySound();
@@ -41,35 +42,36 @@ namespace _3._Scripts.Units.Weapons
 
         protected abstract void Initialize();
         protected abstract void Resetting();
-        
-        protected bool CanAttack()
+
+        public bool CanAttack()
         {
-            return Time.time - LastAttackTime < data.AttackCooldown;
+            return Time.time - LastAttackTime >= data.AttackCooldown;
         }
 
         protected virtual void PerformAttack()
         {
-            
         }
-        
+
         protected virtual void PlaySound()
         {
-            
         }
-        
+
         protected virtual void CreateParticle()
-        { 
-            
+        {
         }
-        
+
         protected virtual void DoAnimation()
         {
-            
         }
 
         protected virtual void DoDamage(IWeaponVisitor visitor)
         {
-            visitor.Visit(data.Damage);
+            visitor.Visit(data.Damage, transform);
+        }
+
+        protected virtual void CallOnAttackEnd()
+        {
+            OnAttackEnd?.Invoke();
         }
     }
 }
