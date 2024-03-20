@@ -15,6 +15,7 @@ namespace YG
         // Ваши сохранения
 
         public PlayerSave playerSave = new();
+        public LevelSaves levelSaves = new();
 
         // Поля (сохранения) можно удалять и создавать новые. При обновлении игры сохранения ломаться не должны
 

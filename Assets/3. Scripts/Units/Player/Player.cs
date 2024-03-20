@@ -13,6 +13,7 @@ namespace _3._Scripts.Units.Player
         private UnitAnimator unitAnimator;
         private AimIK aimIK;
         private PlayerMovement playerMovement;
+        private Rigidbody rb;
         public override void Dead()
         {
             
@@ -30,6 +31,7 @@ namespace _3._Scripts.Units.Player
             }).OnStart(() =>
             {
                 unitAnimator.SetFloat("Speed", 1f);
+                rb.isKinematic = true;
             })
             .SetEase(Ease.Linear);
 
@@ -42,6 +44,7 @@ namespace _3._Scripts.Units.Player
             unitAnimator = GetComponent<UnitAnimator>();
             aimIK = GetComponent<AimIK>();
             playerMovement = GetComponent<PlayerMovement>();
+            rb = GetComponent<Rigidbody>();
             ragdoll.OnStateChanged += ChangeStateByRagdoll;
         }
         

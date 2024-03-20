@@ -5,6 +5,7 @@ namespace _3._Scripts.LevelManager.Enums
         Default,
         Ammunition,
         MiniBoss,
-        Boss
+        Boss,
+        Money
     }
 }

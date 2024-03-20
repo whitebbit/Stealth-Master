@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using _3._Scripts.Detectors;
+using _3._Scripts.Environments;
 using _3._Scripts.FSM.Base;
 using _3._Scripts.Noises;
 using _3._Scripts.Noises.Interfaces;
@@ -12,7 +13,6 @@ using _3._Scripts.Units.Utils;
 using RootMotion.FinalIK;
 using UnityEngine;
 using UnityEngine.AI;
-using Environment = _3._Scripts.Environments.Environment;
 
 namespace _3._Scripts.Units.Bots
 {
@@ -54,7 +54,7 @@ namespace _3._Scripts.Units.Bots
         {
             ragdoll.OnStateChanged += ChangeStateByRagdoll;
             detector.OnFound += OnDetectorFind;
-            Environment.Instance.AddBot(this);
+            Stage.Instance.AddBot(this);
             InitializeFSM();
         }
 
@@ -94,7 +94,7 @@ namespace _3._Scripts.Units.Bots
 
         private static bool CheckDeadBot(Bot bot)
         {
-            return bot.Health.Health <= 0 && Environment.Instance.ContainsBot(bot);
+            return bot.Health.Health <= 0 && Stage.Instance.ContainsBot(bot);
         }
 
         protected IEnumerator EnableAlarm(Bot bot, float delay = 1, Action action = null)
@@ -102,11 +102,11 @@ namespace _3._Scripts.Units.Bots
             if (!CheckDeadBot(bot)) yield break;
 
             action?.Invoke();
-            Environment.Instance.RemoveBot(bot);
+            Stage.Instance.RemoveBot(bot);
 
             yield return new WaitForSeconds(delay);
             if (Health.Health <= 0) yield break;
-            Environment.Instance.Alarm = true;
+            Stage.Instance.Alarm = true;
         }
     }
 }
