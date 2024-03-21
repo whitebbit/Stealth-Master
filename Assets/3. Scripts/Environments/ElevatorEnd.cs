@@ -1,5 +1,6 @@
 using System;
 using _3._Scripts.CameraControllers;
+using _3._Scripts.CameraControllers.Enums;
 using _3._Scripts.Units.Player;
 using DG.Tweening;
 using UnityEngine;
@@ -27,7 +28,7 @@ namespace _3._Scripts.Environments
             target.GoToFinishPoint(finishPoint, 1, () => SetDoorState(false).OnComplete(() =>
                 {
                     target.transform.parent = cabin;
-                    PlayerCameraController.Instance.DisableFollowing();
+                    PlayerCameraController.Instance.SetState(PlayerCameraMode.Finish);
                     cabin.DOMoveY(50, 20);
                 }))
                 .SetDelay(0.25f);

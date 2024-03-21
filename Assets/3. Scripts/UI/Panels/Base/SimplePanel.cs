@@ -2,9 +2,9 @@ using _3._Scripts.UI.Interfaces;
 using _3._Scripts.UI.Transitions;
 using UnityEngine;
 
-namespace _3._Scripts.UI.Panels
+namespace _3._Scripts.UI.Panels.Base
 {
-    public class SimplePanel: UIPanel
+    public abstract class SimplePanel: UIPanel
     {
         [SerializeField] private FadeTransition transition;
         public override IUITransition InTransition { get; set; }

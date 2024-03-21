@@ -1,20 +1,13 @@
 using System;
 using _3._Scripts.UI.Interfaces;
+using _3._Scripts.UI.Panels.Base;
 using _3._Scripts.UI.Transitions;
 using UnityEngine;
 
 namespace _3._Scripts.UI.Panels
 {
-    public class LevelBarPanel : UIPanel
+    public class LevelBarPanel : SimplePanel
     {
-        [SerializeField] private FadeTransition transition;
-        public override IUITransition InTransition { get; set; }
-        public override IUITransition OutTransition { get; set; }
-
-        public override void Initialize()
-        {
-            InTransition = transition;
-            OutTransition = transition;
-        }
+        
     }
 }

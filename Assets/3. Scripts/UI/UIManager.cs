@@ -2,15 +2,16 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using _3._Scripts.Singleton;
 using _3._Scripts.UI.Panels;
 using _3._Scripts.UI.Widgets;
 using DG.Tweening;
 using UnityEngine;
-using VHierarchy.Libs;
+
 
 namespace _3._Scripts.UI
 {
-    public class UIManager : MonoBehaviour
+    public class UIManager : Singleton<UIManager>
     {
         [SerializeField] private UIScreen currentScreen;
         [Header("Screens")] [SerializeField] private List<UIScreen> screens = new();
