@@ -7,16 +7,24 @@ using UnityEngine.EventSystems;
 
 namespace _3._Scripts.UI.Utils
 {
-    public class StartButton: MonoBehaviour, IPointerClickHandler
+    public class StartButton: MonoBehaviour, IPointerDownHandler
     {
-        public void OnPointerClick(PointerEventData eventData)
+        private bool started;
+
+        public void OnPointerDown(PointerEventData eventData)
         {
+            if(started) return;
+            
             PlayerCameraController.Instance.SetState(PlayerCameraMode.Play);
             
-            UIManager.Instance.GetPanel<JoystickPanel>().Enabled = true;
-            UIManager.Instance.GetPanel<LevelBarPanel>().Enabled = false;
             UIManager.Instance.GetWidget<WalletWidget>().PlayMode = true;
+            UIManager.Instance.GetPanel<JoystickPanel>().Enabled = true;
+            UIManager.Instance.GetPanel<UnitCounterPanel>().Enabled = true;
+            UIManager.Instance.GetPanel<LevelBarPanel>().Enabled = false;
             UIManager.Instance.GetPanel<MainPanel>().Enabled = false;
+            
+            started = true;
+
         }
     }
 }

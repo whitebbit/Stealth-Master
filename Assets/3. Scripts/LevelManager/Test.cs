@@ -12,11 +12,11 @@ namespace _3._Scripts.LevelManager
         private void Start()
         {
             LevelHandler.SetLocations(locations);
+            TestAction();
         }
 
         public void TestAction()
         {
-            LevelHandler.CurrentLevelIndex += 1;
             Debug.Log(LevelHandler.CurrentLevel().Name);
             Debug.Log(LevelHandler.CurrentContract().Name);
             Debug.Log(LevelHandler.CurrentLocation().Name);

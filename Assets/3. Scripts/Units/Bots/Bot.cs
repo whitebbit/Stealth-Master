@@ -34,13 +34,13 @@ namespace _3._Scripts.Units.Bots
             var position1 = LastDamageDealer.position;
 
             NoiseEmitter.MakeNoise(position, gameObject.layer);
+            Stage.Instance.UnitsCount--;
+            
             gameObject.layer = LayerMask.NameToLayer("PlayerIgnore");
             detector.gameObject.SetActive(false);
 
             ragdoll.State = true;
-            ragdoll.AddForce(0, (position - position1).normalized + Vector3.up * 1.25f
-                , 5000);
-
+            ragdoll.AddForce(0, (position - position1).normalized + Vector3.up * 1.25f, 5000);
 
             OnDead();
         }
