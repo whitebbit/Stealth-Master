@@ -9,18 +9,20 @@ namespace _3._Scripts.UI.Transitions
     public class FadeTransition : IUITransition
     {
         [SerializeField] private CanvasGroup canvasGroup;
+        [Space]
         [SerializeField] private float duration;
+        [SerializeField] private float delay;
 
         public Tween AnimateIn()
         {
             canvasGroup.blocksRaycasts = true;
-            return canvasGroup.DOFade(1, duration);
+            return canvasGroup.DOFade(1, duration).SetDelay(delay);
         }
 
         public Tween AnimateOut()
         {
             canvasGroup.blocksRaycasts = false;
-            return canvasGroup.DOFade(0, duration);
+            return canvasGroup.DOFade(0, duration).SetDelay(delay);
         }
 
         public void ForceIn()

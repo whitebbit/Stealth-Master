@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using _3._Scripts.UI.Interfaces;
@@ -12,72 +13,82 @@ namespace _3._Scripts.UI
     {
         public string ID => id;
         public bool Blocked { get; private set; }
-        
+        public bool Opened => defaultPanels.All(p => p.Enabled) && opened;
         [SerializeField] private string id;
-        [SerializeField] private UIPanel[] defaultPanels = Array.Empty<UIPanel>();
-        
+        [SerializeField] private List<UIPanel> defaultPanels = new();
+
         private UIPanel[] panels;
         private bool opened;
+        private bool onTransition;
         private CanvasGroup canvasGroup;
-        
+
         public void Initialize()
         {
             canvasGroup = GetComponent<CanvasGroup>();
             panels = GetComponentsInChildren<UIPanel>();
-
             foreach (var panel in panels)
             {
                 panel.Initialize();
                 panel.ForceClose();
             }
-            
             opened = false;
             canvasGroup.alpha = 0;
             canvasGroup.blocksRaycasts = false;
             gameObject.SetActive(false);
         }
 
-        public void Open(float duration = 0.1f, TweenCallback onStart = null, TweenCallback onComplete = null)
+        public void Open(float duration = 0f, TweenCallback onStart = null, TweenCallback onComplete = null)
         {
+            if (onTransition) return;
             if (opened) return;
 
             gameObject.SetActive(true);
+            onTransition = true;
 
             canvasGroup.DOFade(1, duration).OnStart(() =>
             {
-                opened = true;
-                onStart?.Invoke();
                 transform.SetAsLastSibling();
-                foreach (var panel in defaultPanels) panel.Opened = true;
-
+                foreach (var panel in defaultPanels) panel.Enabled = true;
+                onStart?.Invoke();
             }).OnComplete(() =>
             {
+                opened = true;
                 canvasGroup.blocksRaycasts = true;
+                onTransition = false;
                 onComplete?.Invoke();
             });
         }
 
-        public void Close(float duration = 0.1f, TweenCallback onStart = null, TweenCallback onComplete = null)
+        public void Close(float duration = 0f, TweenCallback onStart = null, TweenCallback onComplete = null)
         {
+            if (onTransition) return;
             if (!opened) return;
-            
+            onTransition = true;
+            StartCoroutine(WaitClose(duration, onStart, onComplete));
+        }
+
+        public T GetPanel<T>() where T : UIPanel
+        {
+            return (T)panels.FirstOrDefault(p => p is T);
+        }
+
+        private IEnumerator WaitClose(float duration = 0f, TweenCallback onStart = null,
+            TweenCallback onComplete = null)
+        {
+            foreach (var panel in panels) panel.Enabled = false;
+            yield return new WaitUntil(() => panels.All(p => !p.Enabled));
             canvasGroup.DOFade(0, duration).OnStart(() =>
             {
                 canvasGroup.blocksRaycasts = false;
                 opened = false;
-                foreach (var panel in panels) panel.Opened = false;
                 onStart?.Invoke();
             }).OnComplete(() =>
             {
-                onComplete?.Invoke();
                 transform.SetAsFirstSibling();
+                onTransition = false;
+                onComplete?.Invoke();
                 gameObject.SetActive(false);
             });
-        }
-
-        public T GetPanel<T>() where T: UIPanel
-        {
-            return (T)panels.FirstOrDefault(p => p is T);
         }
     }
 }

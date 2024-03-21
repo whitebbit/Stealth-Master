@@ -12,24 +12,30 @@ namespace _3._Scripts.UI.Transitions
         [Space] [SerializeField] private float duration;
         [SerializeField] private Vector2 direction;
 
+        private Vector2 startPosition;
+
+        public void SetStartPosition()
+        {
+            startPosition = transform.anchoredPosition;
+        }
         public Tween AnimateIn()
         {
-            return transform.DOAnchorPos(transform.anchoredPosition + direction, duration);
+            return transform.DOAnchorPos(startPosition, duration);
         }
 
         public Tween AnimateOut()
         {
-            return transform.DOAnchorPos(transform.anchoredPosition - direction, duration);
+            return transform.DOAnchorPos(startPosition - direction, duration);
         }
 
         public void ForceIn()
         {
-            transform.anchoredPosition += direction;
+            transform.anchoredPosition = startPosition;
         }
 
         public void ForceOut()
         {
-            transform.anchoredPosition -= direction;
+            transform.anchoredPosition = startPosition - direction;
         }
     }
 }

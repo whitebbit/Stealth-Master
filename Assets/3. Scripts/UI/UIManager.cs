@@ -1,35 +1,109 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using _3._Scripts.UI.Panels;
+using _3._Scripts.UI.Widgets;
+using DG.Tweening;
 using UnityEngine;
+using VHierarchy.Libs;
 
 namespace _3._Scripts.UI
 {
-    public class UIManager: MonoBehaviour
+    public class UIManager : MonoBehaviour
     {
-        [SerializeField] private UIScreen startScreen;
+        [SerializeField] private UIScreen currentScreen;
+        [Header("Screens")] [SerializeField] private List<UIScreen> screens = new();
+        private UIWidget[] widgets = Array.Empty<UIWidget>();
+
+        private bool onTransition;
 
         private void Awake()
         {
-            startScreen.Initialize();
+            InitializeScreens();
+            InitializeWidgets();
         }
 
         private void Start()
         {
-            startScreen.Open();
-            StartCoroutine(Test());
+            currentScreen.Open();
+            GetWidget<WalletWidget>(0).Enabled = true;
         }
 
-        private IEnumerator Test()
+        public void SetScreen(string id, TweenCallback onCloseComplete = null, TweenCallback onOpenComplete = null)
         {
-            while (true)
+            if (currentScreen.ID == id) return;
+            if (onTransition) return;
+
+            var screen = screens.FirstOrDefault(s => s.ID == id);
+            if (screen == null) return;
+
+            onTransition = true;
+            StartCoroutine(ChangeScreen(screen, onCloseComplete, onOpenComplete));
+        }
+
+        public T GetWidget<T>(int siblingIndex = -1) where T : UIWidget
+        {
+            var widget = (T)widgets.FirstOrDefault(w => w is T);
+            if (widget == null) return default;
+
+            widget.SetScreen(currentScreen, siblingIndex);
+
+            return widget;
+        }
+
+        public T GetPanel<T>() where T : UIPanel
+        {
+            var panel = currentScreen.GetPanel<T>();
+            if (panel == null)
+                throw new InvalidCastException($"Active screen dont have {typeof(T)}");
+
+            return panel;
+        }
+
+        private void InitializeScreens()
+        {
+            if (!screens.Contains(currentScreen)) screens.Add(currentScreen);
+            foreach (var screen in screens)
             {
-                yield return new WaitForSeconds(2);
-                startScreen.GetPanel<MainBottomPanel>().Opened = false;
-                yield return new WaitForSeconds(2);
-                startScreen.GetPanel<MainBottomPanel>().Opened = true;
+                screen.Initialize();
             }
         }
-        
+
+        private void InitializeWidgets()
+        {
+            widgets = GetComponentsInChildren<UIWidget>();
+            foreach (var widget in widgets)
+            {
+                widget.Initialize();
+                widget.ForceClose();
+            }
+        }
+
+        private void MoveWidgetsToScreen(UIScreen screen)
+        {
+            foreach (var widget in widgets.Where(w => w.Enabled))
+            {
+                widget.SetScreen(screen);
+            }
+        }
+
+
+        private IEnumerator ChangeScreen(UIScreen screen, TweenCallback onCloseComplete = null,
+            TweenCallback onOpenComplete = null)
+        {
+            yield return new WaitUntil(() => currentScreen.Opened);
+            currentScreen.Close(onComplete: () =>
+            {
+                currentScreen = screen;
+                MoveWidgetsToScreen(screen);
+                currentScreen.Open(onComplete: () =>
+                {
+                    onTransition = false;
+                    onOpenComplete?.Invoke();
+                });
+                onCloseComplete?.Invoke();
+            });
+        }
     }
 }
