@@ -20,7 +20,7 @@ namespace _3._Scripts.Units.Weapons.Scriptable
         public float Damage => damage;
         public AnimatorOverrideController AnimatorController => animatorController;
 
-        public string Name => name.Name;
+        public string Name => name.ToString();
 
         public Sprite Icon => icon;
     }

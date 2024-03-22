@@ -11,6 +11,6 @@ namespace _3._Scripts.LevelManager
 
         public Sprite Icon => icon;
 
-        public string Name => name.Name;
+        public string Name => name.ToString();
     }
 }

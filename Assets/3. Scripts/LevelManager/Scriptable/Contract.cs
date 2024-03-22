@@ -13,7 +13,7 @@ namespace _3._Scripts.LevelManager.Scriptable
         [SerializeField] private List<Level> levels = new();
         [SerializeField] private FinalLevelData finalLevelData;
         
-        public string Name => name.Name;
+        public string Name => name.ToString();
         public List<Level> Levels => levels;
         public FinalLevelData FinalLevelData => finalLevelData;
 

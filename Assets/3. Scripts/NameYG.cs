@@ -8,7 +8,9 @@ namespace _3._Scripts
     public class NameYG
     {
         [SerializeField] private SerializableDictionary<string, string> name;
-
-        public string Name => name[YandexGame.lang];
+        public override string ToString()
+        {
+            return name[YandexGame.lang];
+        }
     }
 }

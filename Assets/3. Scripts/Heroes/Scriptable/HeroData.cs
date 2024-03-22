@@ -19,7 +19,7 @@ namespace _3._Scripts.Heroes.Scriptable
         public string ID => id;
         public int StartHealth => startHealth;
         
-        public string Name => name.Name;
+        public string Name => name.ToString();
         public Sprite MiniIcon => miniIcon;
         public Sprite BigIcon => bigIcon;
 

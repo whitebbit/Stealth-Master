@@ -8,7 +8,7 @@ namespace _3._Scripts.Heroes.Perks.Scriptable
         [SerializeField] private NameYG name;
         [SerializeField] private Sprite icon;
 
-        public string Name => name.Name;
+        public string Name => name.ToString();
         public Sprite Icon => icon;
     }
 }
