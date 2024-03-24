@@ -2,6 +2,7 @@
 using _3._Scripts.Controls;
 using _3._Scripts.Controls.Interfaces;
 using _3._Scripts.Controls.Scriptable;
+using _3._Scripts.Environments;
 using _3._Scripts.Units.Animations;
 using UnityEngine;
 
@@ -10,7 +11,7 @@ namespace _3._Scripts.Units.Player
     public class PlayerMovement : MonoBehaviour
     {
         [SerializeField] private MovementConfig config;
-        [SerializeField] private Joystick joystick;
+        //[SerializeField] private Joystick joystick;
 
 
         public float SpeedMultiplier { get; set; }
@@ -21,20 +22,13 @@ namespace _3._Scripts.Units.Player
         {
             animator = GetComponent<UnitAnimator>();
             rb = GetComponent<Rigidbody>();
-            movable = new InputMovable(new JoystickInput(joystick));
         }
 
         private void Start()
         {
             SpeedMultiplier = 1;
         }
-
-        private void OnEnable()
-        {
-            movable.Moved += Move;
-            movable.Stopped += Stop;
-        }
-
+        
         private void Update()
         {
             movable.Move();
@@ -47,8 +41,18 @@ namespace _3._Scripts.Units.Player
             movable.Stopped -= Stop;
         }
 
+        public void SetJoystick(Joystick joystick)
+        {
+            movable = new InputMovable(new JoystickInput(joystick));
+            movable.Moved += Move;
+            movable.Stopped += Stop;
+        }
+        
         private void Move(Vector3 direction)
         {
+            if(!Stage.Instance.OnPlay) return;
+            if (transform.parent != null) transform.parent = null;
+            
             var lookRotation = Quaternion.LookRotation(direction);
             var speed = config.MoveSpeed * (1 + SpeedMultiplier / 100);
             var t = rb.transform;

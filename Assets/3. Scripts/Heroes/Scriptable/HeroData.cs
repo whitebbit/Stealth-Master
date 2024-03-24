@@ -9,6 +9,7 @@ namespace _3._Scripts.Heroes.Scriptable
     {
         [SerializeField] private string id;
         [Header("Main")] [SerializeField] private int startHealth;
+        [Header("Object")] [SerializeField] private Hero prefab;
         [Header("Perks")] 
         [SerializeField] private PerkData firstPerk;
         [SerializeField] private PerkData secondPerk;
@@ -19,11 +20,13 @@ namespace _3._Scripts.Heroes.Scriptable
         public string ID => id;
         public int StartHealth => startHealth;
         
-        public string Name => name.Name;
+        public string Name => name.ToString();
         public Sprite MiniIcon => miniIcon;
         public Sprite BigIcon => bigIcon;
 
         public PerkData FirstPerk => firstPerk;
         public PerkData SecondPerk => secondPerk;
+
+        public Hero Prefab => prefab;
     }
 }

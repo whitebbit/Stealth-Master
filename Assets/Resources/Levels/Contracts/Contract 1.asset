@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 554c844b0fb34f4190faa27aa1acd2d7, type: 3}
+  m_Name: Contract 1
+  m_EditorClassIdentifier: 
+  name:
+    name:
+      m_keys:
+      - ru
+      - en
+      m_values:
+      - "\u041A\u043E\u043D\u0442\u0440\u0430\u043A\u0442 2"
+      - Contract 2
+  levels:
+  - type: 0
+    <Name>k__BackingField: Level_04
+    scene: {fileID: 102900000, guid: 39d2145f51e79ab4da59dfe66065dced, type: 3}
+  - type: 0
+    <Name>k__BackingField: Level_05
+    scene: {fileID: 102900000, guid: 842f3115fa067d24e8d9e89f7e4f8bda, type: 3}
+  - type: 0
+    <Name>k__BackingField: Level_06
+    scene: {fileID: 102900000, guid: 04a35d65ccda6384dab26b94dc4ec33a, type: 3}
+  - type: 0
+    <Name>k__BackingField: Level_07
+    scene: {fileID: 102900000, guid: 6709f6c113bf10f4680756438d59eb32, type: 3}
+  - type: 3
+    <Name>k__BackingField: Level_08_Boss_02
+    scene: {fileID: 102900000, guid: 4e5defdf0464205428a907861e1fbcd0, type: 3}
+  finalLevelData:
+    name:
+      name:
+        m_keys: []
+        m_values: []
+    icon: {fileID: 21300000, guid: e5b342c4922bbca4c9297fa73845b308, type: 3}

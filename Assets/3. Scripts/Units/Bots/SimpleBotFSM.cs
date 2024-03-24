@@ -1,9 +1,9 @@
 using System;
+using _3._Scripts.Environments;
 using _3._Scripts.FSM.Base;
 using _3._Scripts.Units.Bots.States;
 using _3._Scripts.Units.Interfaces;
 using UnityEngine;
-using Environment = _3._Scripts.Environments.Environment;
 
 namespace _3._Scripts.Units.Bots
 {
@@ -54,12 +54,12 @@ namespace _3._Scripts.Units.Bots
         private void SetFSMTransition(FSMHandler fsm)
         {
             fsm.AddTransition(patrolState,
-                new FuncPredicate(() => !visitorDetected && !Chasing && !Searching && !Environment.Instance.Alarm));
+                new FuncPredicate(() => !visitorDetected && !Chasing && !Searching && !Stage.Instance.Alarm));
             fsm.AddTransition(attackState, new FuncPredicate(() => visitorDetected));
             fsm.AddTransition(chaseState, new FuncPredicate(() => Chasing && !attackState.Attacking));
             fsm.AddTransition(searchState,
-                new FuncPredicate(() => !visitorDetected && Searching && !Environment.Instance.Alarm));
-            fsm.AddTransition(alarmState, new FuncPredicate(() => Environment.Instance.Alarm && !attackState.Attacking));
+                new FuncPredicate(() => !visitorDetected && Searching && !Stage.Instance.Alarm));
+            fsm.AddTransition(alarmState, new FuncPredicate(() => Stage.Instance.Alarm && !attackState.Attacking));
         }
 
         private void SubscribeToStates()
@@ -85,7 +85,7 @@ namespace _3._Scripts.Units.Bots
         private void ChaseStateOnChasingFinish()
         {
             Chasing = false;
-            Searching = !Environment.Instance.Alarm;
+            Searching = !Stage.Instance.Alarm;
         }
     }
 }

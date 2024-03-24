@@ -11,7 +11,7 @@ namespace _3._Scripts.LevelManager.Scriptable
         [Space]
         [SerializeField] private List<Contract> contracts = new();
 
-        public string Name => name.Name;
+        public string Name => name.ToString();
         public Sprite Icon => icon;
         public List<Contract> Contracts => contracts;
     }

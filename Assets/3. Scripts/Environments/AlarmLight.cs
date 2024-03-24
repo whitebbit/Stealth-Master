@@ -8,7 +8,7 @@ namespace _3._Scripts.Environments
         
         private void Start()
         {
-            Environment.Instance.OnAlarm += LightState;
+            Stage.Instance.OnAlarm += LightState;
         }
         
         private void LightState(bool state)

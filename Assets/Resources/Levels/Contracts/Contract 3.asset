@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 554c844b0fb34f4190faa27aa1acd2d7, type: 3}
+  m_Name: Contract 3
+  m_EditorClassIdentifier: 
+  name:
+    name:
+      m_keys:
+      - ru
+      - en
+      m_values:
+      - "\u041A\u043E\u043D\u0442\u0440\u0430\u043A\u0442 4"
+      - Contract 4
+  levels:
+  - type: 0
+    scene: {fileID: 102900000, guid: de00fbd9b2bc8d341b626faf46602f5f, type: 3}
+  - type: 0
+    scene: {fileID: 102900000, guid: 268b033310e961d42ad522e1023eb50e, type: 3}
+  - type: 0
+    scene: {fileID: 102900000, guid: 5d7fd19ae961a7048962aa5dc6583113, type: 3}
+  - type: 0
+    scene: {fileID: 102900000, guid: 79dab411d63b6e14bb46e4551dee7c91, type: 3}
+  - type: 0
+    scene: {fileID: 102900000, guid: 32b1b13a7318e4c4691beac9ff5ddea3, type: 3}
+  - type: 0
+    scene: {fileID: 102900000, guid: 984d5f0b96b2ff1498f370cf37477bca, type: 3}
+  - type: 3
+    scene: {fileID: 102900000, guid: 7d7090238359c8545900537822b6d797, type: 3}
+  finalLevelData:
+    name:
+      name:
+        m_keys: []
+        m_values: []
+    icon: {fileID: 21300000, guid: e5b342c4922bbca4c9297fa73845b308, type: 3}
