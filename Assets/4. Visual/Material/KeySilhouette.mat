@@ -56,17 +56,17 @@ Material:
     - _BumpScale: 1
     - _CameraDistanceImpact: 0
     - _CelExtraEnabled: 0
-    - _CelNumSteps: 3
+    - _CelNumSteps: 1
     - _CelPrimaryMode: 1
     - _Cull: 2
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _FlatRimEdgeSmoothness: 0.5
-    - _FlatRimLightAlign: 0
-    - _FlatRimSize: 0.5
-    - _FlatSpecularEdgeSmoothness: 0
-    - _FlatSpecularSize: 0.1
+    - _FlatRimLightAlign: 0.311
+    - _FlatRimSize: 0.142
+    - _FlatSpecularEdgeSmoothness: 1
+    - _FlatSpecularSize: 0.26
     - _Flatness: 1
     - _FlatnessExtra: 1
     - _GlossMapScale: 1
@@ -93,9 +93,9 @@ Material:
     - _Poof: 0.001
     - _QueueOffset: 0
     - _RimEnabled: 0
-    - _SelfShadingSize: 0.298
+    - _SelfShadingSize: 0
     - _SelfShadingSizeExtra: 0.6
-    - _ShadowEdgeSize: 0.419
+    - _ShadowEdgeSize: 0.335
     - _ShadowEdgeSizeExtra: 0.05
     - _Shift: -0.34
     - _SmoothnessTextureChannel: 0
@@ -124,13 +124,13 @@ Material:
     - _BaseColor: {r: 0.9056604, g: 0.70122015, b: 0.055535804, a: 1}
     - _Color: {r: 0.5754717, g: 0.5754717, b: 0.5754717, a: 1}
     - _ColorDim: {r: 1, g: 1, b: 1, a: 1}
-    - _ColorDimCurve: {r: 0.85023, g: 0.85034, b: 0.85045, a: 0.85056}
+    - _ColorDimCurve: {r: 1, g: 0.83157986, b: 0.2971698, a: 1}
     - _ColorDimExtra: {r: 0.85023, g: 0.85034, b: 0.85045, a: 0.85056}
-    - _ColorDimSteps: {r: 0.85023, g: 0.85034, b: 0.85045, a: 0.85056}
-    - _ColorGradient: {r: 0.85023, g: 0.85034, b: 0.85045, a: 0.85056}
+    - _ColorDimSteps: {r: 0.9056604, g: 0.70122015, b: 0.055535804, a: 1}
+    - _ColorGradient: {r: 0.9056604, g: 0.70122015, b: 0.055535804, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _FlatRimColor: {r: 0.85023, g: 0.85034, b: 0.85045, a: 0.85056}
-    - _FlatSpecularColor: {r: 0.85023, g: 0.85034, b: 0.85045, a: 0.85056}
+    - _FlatRimColor: {r: 0.9056604, g: 0.70122015, b: 0.055535804, a: 1}
+    - _FlatSpecularColor: {r: 0.9056604, g: 0.70122015, b: 0.055535804, a: 1}
     - _LightmapDirection: {r: 0, g: 1, b: 0, a: 0}
     - _OutlineColor: {r: 1, g: 1, b: 1, a: 1}
     - _Position: {r: 0, g: 0, b: 0, a: 0}
