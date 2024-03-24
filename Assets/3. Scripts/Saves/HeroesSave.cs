@@ -10,6 +10,13 @@ namespace _3._Scripts.Saves
     {
         public List<HeroSave> unlockedHeroes = new();
 
+        public string currentHero = "ninja";
+
+        public bool ExistHero(string id)
+        {
+            return unlockedHeroes.Exists(h=>h.id == id);
+        }
+        
         public HeroSave GetHero(string id)
         {
             return unlockedHeroes.FirstOrDefault(s => s.id == id);
@@ -26,11 +33,11 @@ namespace _3._Scripts.Saves
 
         public void UnlockHero(string id)
         {
-            if (unlockedHeroes.Exists(s => s.id == id)) return;
+            if (ExistHero(id)) return;
             unlockedHeroes.Add(new HeroSave
             {
                 id = id,
-                level = 1
+                level = 0
             });
             YandexGame.SaveProgress();
         }

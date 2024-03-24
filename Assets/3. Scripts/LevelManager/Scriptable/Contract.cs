@@ -10,19 +10,19 @@ namespace _3._Scripts.LevelManager.Scriptable
     {
         [SerializeField] private NameYG name;
         [Space]
-        [SerializeField] private List<Level> levels = new();
+        [SerializeField] private List<Stage> stages = new();
         [SerializeField] private FinalLevelData finalLevelData;
         
         public string Name => name.ToString();
-        public List<Level> Levels => levels;
+        public List<Stage> Stages => stages;
         public FinalLevelData FinalLevelData => finalLevelData;
 
 #if  UNITY_EDITOR
         private void OnValidate()
         {
-            foreach (var level in levels)
+            foreach (var stage in stages)
             {
-                level.SetLevelName();
+                stage.SetLevelName();
             }
         }
 #endif

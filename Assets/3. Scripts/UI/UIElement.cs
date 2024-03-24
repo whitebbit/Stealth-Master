@@ -45,12 +45,12 @@ namespace _3._Scripts.UI
             
             onTransition = true;
             gameObject.SetActive(true);
-            OnOpen();
             InTransition.AnimateIn().OnComplete(() =>
             {
                 _enabled = true;
                 onTransition = false;
             });
+            OnOpen();
         }
         private void Close()
         {

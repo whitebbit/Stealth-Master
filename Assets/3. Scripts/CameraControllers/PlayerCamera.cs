@@ -14,5 +14,11 @@ namespace _3._Scripts.CameraControllers
         public PlayerCameraMode Mode => mode;
 
         public void SetPriority(int priority) => camera.Priority = priority;
+
+        public void SetTarget(Transform target)
+        {
+            camera.Follow = target;
+            camera.LookAt = target;
+        }
     }
 }

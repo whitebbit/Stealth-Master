@@ -17,6 +17,7 @@ namespace _3._Scripts.UI
         [Header("Screens")] [SerializeField] private List<UIScreen> screens = new();
         private UIWidget[] widgets = Array.Empty<UIWidget>();
 
+        public UIScreen CurrentScreen => currentScreen;
         private bool onTransition;
 
         private void Awake()
@@ -24,13 +25,7 @@ namespace _3._Scripts.UI
             InitializeScreens();
             InitializeWidgets();
         }
-
-        private void Start()
-        {
-            currentScreen.Open();
-            GetWidget<WalletWidget>(0).Enabled = true;
-        }
-
+        
         public void SetScreen(string id, TweenCallback onCloseComplete = null, TweenCallback onOpenComplete = null)
         {
             if (currentScreen.ID == id) return;

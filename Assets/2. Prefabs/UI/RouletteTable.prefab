@@ -541,7 +541,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edcd6106d7204e65819b8233b341db1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rarityTables:
+  - rarity: 1
+    table: {fileID: 21300000, guid: 3b1d661412258a94b9469ed529adccdf, type: 3}
+  - rarity: 2
+    table: {fileID: 21300000, guid: d32675006671ecb4e91c95e5965bfd44, type: 3}
+  - rarity: 3
+    table: {fileID: 21300000, guid: 778f20d1f80abbe418be981e4778c70f, type: 3}
   rect: {fileID: 8079276025853557775}
   title: {fileID: 2326241113374627255}
   icon: {fileID: 4787010827429558520}
   background: {fileID: 6144225845574486245}
+  specialIconTransform: {fileID: 2176377609716553693}
+  heroIcon: {fileID: 4441267971618985778}

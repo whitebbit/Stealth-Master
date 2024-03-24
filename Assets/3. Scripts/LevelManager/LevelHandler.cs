@@ -33,22 +33,22 @@ namespace _3._Scripts.LevelManager
             }
         }
 
-        public static int CurrentLevelIndex
+        public static int CurrentStageIndex
         {
             get => YandexGame.savesData.levelSaves.currentLevel;
             set
             {
-                if (value >= CurrentContract().Levels.Count)
+                if (value >= CurrentContract().Stages.Count)
                 {
                     YandexGame.savesData.levelSaves.currentLevel = 0;
                     CurrentContractIndex += 1;
                 }
                 else YandexGame.savesData.levelSaves.currentLevel = value;
-                OnLevelChange?.Invoke();
+                OnStageChange?.Invoke();
             }
         }
 
-        public static event Action OnLevelChange;
+        public static event Action OnStageChange;
         public static event Action OnContractChange;
         public static event Action OnLocationChange;
 
@@ -57,14 +57,14 @@ namespace _3._Scripts.LevelManager
 
         public static void SetLocations(List<Location> locations) => _locations = locations;
 
-        public static Level CurrentLevel()
+        public static Stage CurrentStage()
         {
-            var level = _locations[CurrentLocationIndex].Contracts[CurrentContractIndex].Levels[CurrentLevelIndex];
+            var level = CurrentContract().Stages[CurrentStageIndex];
             return level;
         }
         public static Contract CurrentContract()
         {
-            var contract = _locations[CurrentLocationIndex].Contracts[CurrentContractIndex];
+            var contract = CurrentLocation().Contracts[CurrentContractIndex];
             return contract;
         }
         public static Location CurrentLocation()

@@ -14,13 +14,13 @@ namespace _3._Scripts.UI.Transitions
         public Tween AnimateIn()
         {
             canvasGroup.blocksRaycasts = true;
-            return canvasGroup.DOFade(1, duration);
+            return canvasGroup.DOFade(1, duration).SetLink(canvasGroup.gameObject);
         }
 
         public Tween AnimateOut()
         {
             canvasGroup.blocksRaycasts = false;
-            return canvasGroup.DOFade(0, duration);
+            return canvasGroup.DOFade(0, duration).SetLink(canvasGroup.gameObject);
         }
 
         public void ForceIn()

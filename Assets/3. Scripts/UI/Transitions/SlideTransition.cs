@@ -20,12 +20,12 @@ namespace _3._Scripts.UI.Transitions
         }
         public Tween AnimateIn()
         {
-            return transform.DOAnchorPos(startPosition, duration);
+            return transform.DOAnchorPos(startPosition, duration).SetLink(transform.gameObject);
         }
 
         public Tween AnimateOut()
         {
-            return transform.DOAnchorPos(startPosition - direction, duration);
+            return transform.DOAnchorPos(startPosition - direction, duration).SetLink(transform.gameObject);
         }
 
         public void ForceIn()

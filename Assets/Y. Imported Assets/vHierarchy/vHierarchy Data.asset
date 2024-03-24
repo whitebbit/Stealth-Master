@@ -18,6 +18,7 @@ MonoBehaviour:
     - c16a1cd0711e6284ab981ff7891803b9
     - 6eb44dbc85bc253488119c37a9c10652
     - 4da74c47083c1534b95370a9b1284f85
+    - 31db1d33d1e083a45a73a119294e7f96
     values:
     - goDatas_byGlobalId:
         keys:
@@ -27,6 +28,7 @@ MonoBehaviour:
         - globalObjectIdString: GlobalObjectId_V1-2-975017c0241185447bfcb009010d2e91-2089042435-0
         - globalObjectIdString: GlobalObjectId_V1-2-975017c0241185447bfcb009010d2e91-1000527859-0
         - globalObjectIdString: GlobalObjectId_V1-2-975017c0241185447bfcb009010d2e91-540665238-0
+        - globalObjectIdString: GlobalObjectId_V1-2-975017c0241185447bfcb009010d2e91-1811753928-0
         values:
         - colorIndex: 5
           iconNameOrGuid: AvatarMask On Icon
@@ -34,12 +36,14 @@ MonoBehaviour:
           iconNameOrGuid: 
         - colorIndex: 6
           iconNameOrGuid: 
+        - colorIndex: 9
+          iconNameOrGuid: Favorite
+        - colorIndex: 9
+          iconNameOrGuid: Camera Icon
+        - colorIndex: 9
+          iconNameOrGuid: StandaloneInputModule Icon
         - colorIndex: 8
           iconNameOrGuid: Settings Icon
-        - colorIndex: 8
-          iconNameOrGuid: Camera Icon
-        - colorIndex: 8
-          iconNameOrGuid: StandaloneInputModule Icon
     - goDatas_byGlobalId:
         keys:
         - globalObjectIdString: GlobalObjectId_V1-1-c16a1cd0711e6284ab981ff7891803b9-6874717132683085949-0
@@ -58,3 +62,15 @@ MonoBehaviour:
         values:
         - colorIndex: 5
           iconNameOrGuid: 
+    - goDatas_byGlobalId:
+        keys:
+        - globalObjectIdString: GlobalObjectId_V1-2-31db1d33d1e083a45a73a119294e7f96-279574797-0
+        - globalObjectIdString: GlobalObjectId_V1-2-31db1d33d1e083a45a73a119294e7f96-1464054723-0
+        - globalObjectIdString: GlobalObjectId_V1-2-31db1d33d1e083a45a73a119294e7f96-1776282139-0
+        values:
+        - colorIndex: 9
+          iconNameOrGuid: Favorite
+        - colorIndex: 9
+          iconNameOrGuid: Camera Icon
+        - colorIndex: 9
+          iconNameOrGuid: StandaloneInputModule Icon

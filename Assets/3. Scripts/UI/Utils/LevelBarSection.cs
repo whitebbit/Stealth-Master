@@ -7,10 +7,10 @@ namespace _3._Scripts.UI.Utils
     [Serializable]
     public class LevelBarSection
     {
-        [SerializeField] private LevelType type;
+        [SerializeField] private StageType type;
         [SerializeField] private Sprite sprite;
 
-        public LevelType Type => type;
+        public StageType Type => type;
         public Sprite Sprite => sprite;
     }
 }

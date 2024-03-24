@@ -9,6 +9,7 @@ namespace _3._Scripts.Heroes.Scriptable
     {
         [SerializeField] private string id;
         [Header("Main")] [SerializeField] private int startHealth;
+        [Header("Object")] [SerializeField] private Hero prefab;
         [Header("Perks")] 
         [SerializeField] private PerkData firstPerk;
         [SerializeField] private PerkData secondPerk;
@@ -25,5 +26,7 @@ namespace _3._Scripts.Heroes.Scriptable
 
         public PerkData FirstPerk => firstPerk;
         public PerkData SecondPerk => secondPerk;
+
+        public Hero Prefab => prefab;
     }
 }

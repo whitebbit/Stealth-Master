@@ -4,6 +4,7 @@ using _3._Scripts.CameraControllers.Enums;
 using _3._Scripts.Units.Player;
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 
 namespace _3._Scripts.Environments
@@ -25,11 +26,14 @@ namespace _3._Scripts.Environments
         private void DoFinish(Player target)
         {
             SetDoorState(true);
+            PlayerCameraController.Instance.SetState(PlayerCameraMode.Finish);
             target.GoToFinishPoint(finishPoint, 1, () => SetDoorState(false).OnComplete(() =>
                 {
                     target.transform.parent = cabin;
-                    PlayerCameraController.Instance.SetState(PlayerCameraMode.Finish);
-                    cabin.DOMoveY(50, 20);
+                    cabin.DOMoveY(cabin.transform.position.y + 15, 2).OnComplete(() =>
+                    {
+                        SceneManager.LoadScene(0);
+                    }).SetLink(cabin.gameObject);
                 }))
                 .SetDelay(0.25f);
         }

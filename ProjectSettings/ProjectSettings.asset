@@ -48,6 +48,7 @@ PlayerSettings:
   defaultScreenHeightWeb: 600
   m_StereoRenderingPath: 0
   m_ActiveColorSpace: 0
+  unsupportedMSAAFallback: 0
   m_SpriteBatchVertexThreshold: 300
   m_MTRendering: 1
   mipStripping: 0
@@ -75,6 +76,7 @@ PlayerSettings:
   androidMinimumWindowWidth: 400
   androidMinimumWindowHeight: 300
   androidFullscreenMode: 1
+  androidAutoRotationBehavior: 1
   defaultIsNativeResolution: 1
   macRetinaSupport: 1
   runInBackground: 0
@@ -135,6 +137,8 @@ PlayerSettings:
   vulkanEnableLateAcquireNextImage: 0
   vulkanEnableCommandBufferRecycling: 1
   loadStoreDebugModeEnabled: 0
+  visionOSBundleVersion: 1.0
+  tvOSBundleVersion: 1.0
   bundleVersion: 0.1
   preloadedAssets: []
   metroInputSource: 0
@@ -457,6 +461,8 @@ PlayerSettings:
     m_EncodingQuality: 1
   - m_BuildTarget: tvOS
     m_EncodingQuality: 1
+  - m_BuildTarget: WebGL
+    m_EncodingQuality: 0
   m_BuildTargetGroupHDRCubemapEncodingQuality:
   - m_BuildTarget: Android
     m_EncodingQuality: 1
@@ -475,6 +481,8 @@ PlayerSettings:
     m_Encoding: 1
   m_BuildTargetDefaultTextureCompressionFormat:
   - m_BuildTarget: Android
+    m_Format: 3
+  - m_BuildTarget: WebGL
     m_Format: 3
   playModeTestRunnerEnabled: 0
   runPlayModeTestAsEditModeTest: 0
@@ -495,7 +503,6 @@ PlayerSettings:
   switchScreenResolutionBehavior: 2
   switchUseCPUProfiler: 0
   switchEnableFileSystemTrace: 0
-  switchUseGOLDLinker: 0
   switchLTOSetting: 0
   switchApplicationID: 0x01004b9000490000
   switchNSODependencies: 
@@ -713,7 +720,7 @@ PlayerSettings:
   spritePackerPolicy: 
   webGLMemorySize: 16
   webGLExceptionSupport: 1
-  webGLNameFilesAsHashes: 0
+  webGLNameFilesAsHashes: 1
   webGLShowDiagnostics: 0
   webGLDataCaching: 1
   webGLDebugSymbols: 0
@@ -726,7 +733,7 @@ PlayerSettings:
   webGLWasmArithmeticExceptions: 0
   webGLLinkerTarget: 1
   webGLThreadsSupport: 0
-  webGLDecompressionFallback: 0
+  webGLDecompressionFallback: 1
   webGLInitialMemorySize: 32
   webGLMaximumMemorySize: 2048
   webGLMemoryGrowthMode: 2
@@ -736,7 +743,7 @@ PlayerSettings:
   webGLPowerPreference: 2
   scriptingDefineSymbols:
     Standalone: YG_PLUGIN_YANDEX_GAME;ODIN_INSPECTOR
-    WebGL: YG_PLUGIN_YANDEX_GAME;YG_TEXT_MESH_PRO;ODIN_INSPECTOR
+    WebGL: YG_PLUGIN_YANDEX_GAME;YG_TEXT_MESH_PRO
   additionalCompilerArguments: {}
   platformArchitecture: {}
   scriptingBackend: {}

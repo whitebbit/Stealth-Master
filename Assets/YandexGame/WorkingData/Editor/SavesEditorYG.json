@@ -1,0 +1,31 @@
+{
+    "idSave": 1,
+    "isFirstSession": false,
+    "language": "ru",
+    "promptDone": false,
+    "playerSave": {
+        "wallet": {
+            "money": 0,
+            "diamonds": 0,
+            "tokens": 0
+        },
+        "heroes": {
+            "unlockedHeroes": [
+                {
+                    "id": "ninja",
+                    "level": 0
+                }
+            ],
+            "currentHero": "ninja"
+        },
+        "weapon": {
+            "id": "",
+            "perkUsed": false
+        }
+    },
+    "levelSaves": {
+        "currentLevel": 0,
+        "currentContract": 0,
+        "currentLocation": 0
+    }
+}
